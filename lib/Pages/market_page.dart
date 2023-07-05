@@ -86,15 +86,22 @@ class _MarketPageState extends State<MarketPage> {
               itemCount: snapshot.data?.length ?? 0,
               itemBuilder: (BuildContext context, int index) {
                 final asset = snapshot.data![index];
-                return _buildMarketAssetTile(asset, index);
+                return _buildMarketAssetTile(
+                  asset,
+                  index,
+                );
               },
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: Text('${snapshot.error}'),
+              child: Text(
+                '${snapshot.error}',
+              ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

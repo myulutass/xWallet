@@ -21,14 +21,15 @@ Decoration? mainTheme() {
 // Border Theme
 GradientBoxBorder gradientBorder() {
   return const GradientBoxBorder(
-      gradient: LinearGradient(
-        colors: [
-          Color.fromARGB(255, 235, 235, 235),
-          Color.fromARGB(255, 227, 6, 80),
-          Color.fromARGB(159, 211, 13, 188)
-        ],
-      ),
-      width: 2);
+    gradient: LinearGradient(
+      colors: [
+        Color.fromARGB(255, 235, 235, 235),
+        Color.fromARGB(255, 227, 6, 80),
+        Color.fromARGB(159, 211, 13, 188)
+      ],
+    ),
+    width: 2,
+  );
 }
 
 // Icon Theme
@@ -69,26 +70,27 @@ Widget customDivider() {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
     child: AnimateGradient(
-        primaryColors: const [
-          Color.fromARGB(116, 134, 0, 120),
-          Color.fromARGB(255, 197, 3, 251),
-          Color.fromARGB(255, 50, 8, 177),
-          Color.fromARGB(139, 225, 8, 109),
-        ],
-        secondaryColors: const [
-          Color.fromARGB(116, 134, 0, 120),
-          Color.fromARGB(255, 197, 3, 251),
-          Color.fromARGB(255, 50, 8, 177),
-          Color.fromARGB(139, 225, 8, 109),
-        ],
-        primaryBegin: Alignment.centerLeft,
-        primaryEnd: Alignment.centerRight,
-        secondaryBegin: Alignment.centerLeft,
-        secondaryEnd: Alignment.center,
-        duration: const Duration(seconds: 2),
-        child: const SizedBox(
-          height: 3,
-          width: double.infinity,
-        )),
+      primaryColors: const [
+        Color.fromARGB(116, 134, 0, 120),
+        Color.fromARGB(255, 197, 3, 251),
+        Color.fromARGB(255, 50, 8, 177),
+        Color.fromARGB(139, 225, 8, 109),
+      ],
+      secondaryColors: const [
+        Color.fromARGB(116, 134, 0, 120),
+        Color.fromARGB(255, 197, 3, 251),
+        Color.fromARGB(255, 50, 8, 177),
+        Color.fromARGB(139, 225, 8, 109),
+      ],
+      primaryBegin: Alignment.centerLeft,
+      primaryEnd: Alignment.centerRight,
+      secondaryBegin: Alignment.centerLeft,
+      secondaryEnd: Alignment.center,
+      duration: const Duration(seconds: 2),
+      child: const SizedBox(
+        height: 3,
+        width: double.infinity,
+      ),
+    ),
   );
 }

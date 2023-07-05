@@ -19,7 +19,10 @@ class _BalanceViewState extends State<BalanceView> {
         sigmaY: 70,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 40, top: 20),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).size.height * .03,
+          top: MediaQuery.of(context).size.height * .03,
+        ),
         child: Container(
           height: MediaQuery.of(context).size.height * .10,
           width: MediaQuery.of(context).size.width * .70,
@@ -28,8 +31,8 @@ class _BalanceViewState extends State<BalanceView> {
             borderRadius: BorderRadius.circular(20),
           ),
           child: const AnimatedFlipCounter(
-            value: 1,
-            prefix: "\$562",
+            value: 23,
+            prefix: "\$",
             fractionDigits: 2,
             duration: Duration(milliseconds: 700),
             textStyle: TextStyle(

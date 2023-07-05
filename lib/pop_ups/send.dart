@@ -1,6 +1,7 @@
-import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:xwallet/Pages/market_page.dart';
+
+import 'coin_dropdown.dart';
 
 class Send extends StatefulWidget {
   final TextEditingController textController = TextEditingController();
@@ -27,66 +28,6 @@ class _SendState extends State<Send> {
         });
       }
     });
-  }
-
-  Widget _buildDropdownMenu(List<MarketAsset> coins,
-      Function(dynamic) onChanged, String? selectedValue) {
-    final items = coins.map<DropdownMenuItem<String>>((coin) {
-      return DropdownMenuItem<String>(
-          value: coin.name,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 30),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.7,
-              child: ListTile(
-                dense: true,
-                horizontalTitleGap: 30,
-                textColor: Colors.white,
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(coin.icon),
-                ),
-                title: Text(
-                  coin.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                subtitle: Align(
-                  alignment: Alignment.topLeft,
-                  child: AnimatedFlipCounter(
-                    fractionDigits: 2,
-                    prefix: "\$",
-                    value: coin.priceUsd,
-                    duration: const Duration(milliseconds: 500),
-                    thousandSeparator: '.',
-                    textStyle: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                trailing: const Text(
-                  '0',
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
-            ),
-          ));
-    }).toList();
-
-    return DropdownButton<dynamic>(
-      borderRadius: BorderRadius.circular(20),
-      underline: Container(),
-      dropdownColor: const Color.fromARGB(202, 42, 2, 46),
-      iconSize: 14,
-      itemHeight: 60,
-      value: selectedValue,
-      items: items,
-      onChanged: onChanged,
-    );
   }
 
   @override
@@ -122,17 +63,14 @@ class _SendState extends State<Send> {
                           child: Column(
                             children: [
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color:
-                                        const Color.fromARGB(58, 243, 239, 239),
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: _buildDropdownMenu(coins,
-                                    (dynamic newValue) {
+                              CoinDropdownMenu(
+                                coins: coins,
+                                onChanged: (dynamic newValue) {
                                   setState(() {
                                     selectedCoin1 = newValue;
                                   });
-                                }, selectedCoin1),
+                                },
+                                selectedValue: selectedCoin1,
                               ),
                               const SizedBox(height: 15),
                               Padding(

@@ -19,7 +19,7 @@ class _CryptoListState extends State<CryptoList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .60,
+      height: MediaQuery.of(context).size.height * .41,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         color: const Color.fromARGB(0, 32, 33, 33),
@@ -57,7 +57,7 @@ class _CryptoListState extends State<CryptoList> {
                             ],
                             stops: const [0.0, 1.0],
                           ),
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: ListTile(
