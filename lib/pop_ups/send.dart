@@ -49,9 +49,10 @@ class _SendState extends State<Send> {
                       List<MarketAsset> coins = snapshot.data!;
 
                       return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 150),
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.width * .40),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * .8,
+                          width: MediaQuery.of(context).size.width * .85,
                           height: MediaQuery.of(context).size.height * .4,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(80, 47, 4, 90),
@@ -60,23 +61,26 @@ class _SendState extends State<Send> {
                             ),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Column(
-                            children: [
-                              const SizedBox(height: 10),
-                              CoinDropdownMenu(
-                                coins: coins,
-                                onChanged: (dynamic newValue) {
-                                  setState(() {
-                                    selectedCoin1 = newValue;
-                                  });
-                                },
-                                selectedValue: selectedCoin1,
-                              ),
-                              const SizedBox(height: 15),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: TextField(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * .03,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                CoinDropdownMenu(
+                                  // COIN SELECTION
+                                  coins: coins,
+                                  onChanged: (dynamic newValue) {
+                                    setState(() {
+                                      selectedCoin1 = newValue;
+                                    });
+                                  },
+                                  selectedValue: selectedCoin1,
+                                ),
+                                TextField(
+                                  //AMOUNT INPUT
                                   autocorrect: false,
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
@@ -93,12 +97,8 @@ class _SendState extends State<Send> {
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: TextField(
+                                TextField(
+                                  // ADDRESS INPUT
                                   autocorrect: false,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -114,13 +114,13 @@ class _SendState extends State<Send> {
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Send'),
-                              ),
-                            ],
+                                ElevatedButton(
+                                  // SEND BUTTON
+                                  onPressed: () {},
+                                  child: const Text('Send'),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

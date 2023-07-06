@@ -18,33 +18,35 @@ class CoinDropdownMenu extends StatelessWidget {
     final items = coins.map<DropdownMenuItem<String>>((coin) {
       return DropdownMenuItem<String>(
         value: coin.name,
-        child: Container(
-          width: MediaQuery.of(context).size.width * .69,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(98, 146, 141, 141),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: ListTile(
-            horizontalTitleGap: MediaQuery.of(context).size.width * .05,
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(coin.icon),
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width * .72,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(98, 146, 141, 141),
+              borderRadius: BorderRadius.circular(20),
             ),
-            title: Text(
-              coin.name,
-              style: const TextStyle(
-                fontWeight: FontWeight.normal,
+            child: ListTile(
+              horizontalTitleGap: MediaQuery.of(context).size.width * .05,
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(coin.icon),
               ),
-            ),
-            subtitle: Text(coin.priceUsd.toStringAsFixed(2),
+              title: Text(
+                coin.name,
                 style: const TextStyle(
-                  fontSize: 12,
                   fontWeight: FontWeight.normal,
-                )),
-            trailing: const Text(
-              '0',
-              style: TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.w300,
+                ),
+              ),
+              subtitle: Text(coin.priceUsd.toStringAsFixed(2),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.normal,
+                  )),
+              trailing: const Text(
+                '0',
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
             ),
           ),

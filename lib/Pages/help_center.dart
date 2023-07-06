@@ -36,7 +36,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
           duration: const Duration(
             milliseconds: 400,
           ),
-          left: _isExpanded ? 300 : 10,
+          left: _isExpanded
+              ? MediaQuery.of(context).size.width * .78
+              : MediaQuery.of(context).size.width * .02,
           top: 15,
           curve: Curves.easeInOut,
           child: GradientIcon(
@@ -92,7 +94,7 @@ final List<CustomExpansionTile> expansionTileDataList = [
   ),
   const CustomExpansionTile(
     leadingIcon: Icon(Icons.wallet_rounded),
-    title: 'Creating and Managing Wallet',
+    title: 'Managing Wallet',
     content: Text(
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. bi non felis quis augue interdum tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum egestas nibh id ligula euismod, sed dapibus odio sollicitudin. Sed eleifend augue nec lectus tincidunt, at aliquam diam feugiatMorbi finibus ipsum elit, viverra hendrerit leo faucibus vel. Sed malesuada sit amet ex in rhoncus. Nam id urna arcu. Nam consectetur gravida cursus. Nunc dignissim lacus sed maximus porttitor. Mauris pharetra, ipsum sit amet congue dapibus,  Mauris in porttitor tortor, quis faucibus lacus.',
     ),
@@ -163,10 +165,10 @@ class HelpCenter extends StatelessWidget {
                     child: const Text(
                       'Send a feedback request from here.',
                       style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        color: Color.fromARGB(255, 61, 159, 239),
-                        fontSize: 15,
-                      ),
+                          fontStyle: FontStyle.italic,
+                          color: Color.fromARGB(251, 11, 124, 210),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
                     ),
                     onTap: () =>
                         Navigator.pushNamed(context, route.feedbackPage),

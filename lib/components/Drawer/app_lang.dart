@@ -21,7 +21,7 @@ class _AppLanguageState extends State<AppLanguage> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      dropdownColor: Colors.transparent,
+      dropdownColor: const Color.fromARGB(136, 0, 0, 0),
       borderRadius: BorderRadius.circular(5),
       value: _appLanguage,
       onChanged: (String? newValue) {

@@ -22,7 +22,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildCurrencyDropdown() {
     return DropdownButton<String>(
       underline: const SizedBox(),
-      dropdownColor: Colors.transparent,
+      dropdownColor: const Color.fromARGB(136, 0, 0, 0),
       borderRadius: BorderRadius.circular(5),
       value: _selectedCurrency,
       onChanged: (String? newValue) {
@@ -69,7 +69,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildLogOutListTile() {
     return ListTile(
       leading: const GradientIcon(
-        icon: Icon(Icons.logout, opticalSize: 25),
+        icon: Icon(Icons.logout),
       ),
       title: const Text(
         'Log Out',

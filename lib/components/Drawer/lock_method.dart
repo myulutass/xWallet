@@ -21,7 +21,7 @@ class _LockMethodState extends State<LockMethod> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      dropdownColor: Colors.transparent,
+      dropdownColor: const Color.fromARGB(136, 0, 0, 0),
       borderRadius: BorderRadius.circular(5),
       value: _lockMethod,
       onChanged: (String? newValue) {

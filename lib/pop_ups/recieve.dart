@@ -38,117 +38,116 @@ class _RecieveState extends State<Recieve> {
       },
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: FutureBuilder<List<MarketAsset>>(
-                  future: widget.topCurrenciesFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List<MarketAsset> coins = snapshot.data!;
+          child: Center(
+            child: FutureBuilder<List<MarketAsset>>(
+              future: widget.topCurrenciesFuture,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<MarketAsset> coins = snapshot.data!;
 
-                      return Container(
-                        width: MediaQuery.of(context).size.width * .8,
-                        height: MediaQuery.of(context).size.height * .53,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(80, 47, 4, 90),
-                          border: Border.all(
-                            color: const Color.fromARGB(255, 116, 116, 116),
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.width * .25),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * .85,
+                      height: MediaQuery.of(context).size.height * .55,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(80, 47, 4, 90),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 116, 116, 116),
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          CoinDropdownMenu(
+                            // COIN SELECTION
+                            coins: coins,
+                            onChanged: (dynamic newValue) {
+                              setState(() {
+                                selectedCoin1 = newValue;
+                              });
+                            },
+                            selectedValue: selectedCoin1,
                           ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 10),
-                            CoinDropdownMenu(
-                              coins: coins,
-                              onChanged: (dynamic newValue) {
-                                setState(() {
-                                  selectedCoin1 = newValue;
-                                });
-                              },
-                              selectedValue: selectedCoin1,
+                          QrImageView(
+                            // QR CODE
+                            data: 'www.example.com',
+                            version: QrVersions.auto,
+                            size: MediaQuery.of(context).size.width * .4,
+                            eyeStyle: const QrEyeStyle(
+                              eyeShape: QrEyeShape.square,
+                              color: Color.fromARGB(255, 109, 13, 103),
                             ),
-                            const SizedBox(height: 15),
-                            QrImageView(
-                              data: 'www.example.com',
-                              version: QrVersions.auto,
-                              size: 175,
-                              eyeStyle: const QrEyeStyle(
-                                eyeShape: QrEyeShape.square,
-                                color: Color.fromARGB(255, 109, 13, 103),
-                              ),
-                              backgroundColor:
-                                  const Color.fromARGB(105, 243, 240, 240),
+                            backgroundColor:
+                                const Color.fromARGB(105, 243, 240, 240),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * .05,
                             ),
-                            const SizedBox(height: 15),
-                            Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(
-                                ' Only $selectedCoin1 can be sent to this address, otherwise all the assets will be permanently lost !',
-                                style: const TextStyle(
-                                    color: Color.fromARGB(224, 231, 213, 167),
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.italic),
-                                textAlign: TextAlign.center,
-                              ),
+                            child: Text(
+                              //DISCLAIMER TEXT
+                              ' Only $selectedCoin1 can be sent to this address, otherwise all the assets will be permanently lost !',
+                              style: const TextStyle(
+                                  color: Color.fromARGB(224, 231, 213, 167),
+                                  fontSize: 14,
+                                  fontStyle: FontStyle.italic),
+                              textAlign: TextAlign.center,
                             ),
-                            const SizedBox(height: 15),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.copy,
-                                        color: Colors.white,
-                                      ),
+                          ),
+                          Row(
+                            //ICON BUTTONS
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.copy,
+                                      color: Colors.white,
                                     ),
-                                    const Text(
-                                      'Copy Address',
-                                      style: TextStyle(fontSize: 12),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                Column(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.share,
-                                        color: Colors.white,
-                                      ),
+                                  ),
+                                  const Text(
+                                    'Copy Address',
+                                    style: TextStyle(fontSize: 12),
+                                  )
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.share,
+                                      color: Colors.white,
                                     ),
-                                    const Text(
-                                      'Share Address',
-                                      style: TextStyle(fontSize: 12),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    } else if (snapshot.hasError) {
-                      return Center(
-                        child: Text('${snapshot.error}'),
-                      );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
-                ),
-              ),
-            ],
+                                  ),
+                                  const Text(
+                                    'Share Address',
+                                    style: TextStyle(fontSize: 12),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('${snapshot.error}'),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
           ),
         ),
       ),

@@ -48,7 +48,7 @@ class _SwapState extends State<Swap> {
 
   Widget _buildSwapColumn(List<MarketAsset> coins) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CoinDropdownMenu(
           coins: coins,

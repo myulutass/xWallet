@@ -110,6 +110,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       decoration: mainTheme(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: _buildHomePageAppBar(),
         drawer: const SideDrawer(),
         body: _buildHomePageBody(),

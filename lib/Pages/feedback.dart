@@ -59,13 +59,17 @@ class _FeedbackPageState extends State<FeedbackPage>
           backgroundColor: const Color.fromARGB(103, 9, 1, 40),
         ),
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * .07),
           // Robot Image
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('lib/assets/My project-1.png'),
               fit: BoxFit.cover,
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment(
+                MediaQuery.of(context).size.height * .1,
+                MediaQuery.of(context).size.width * .5,
+              ),
               opacity: 0.6,
             ),
           ),
