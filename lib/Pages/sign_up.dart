@@ -38,7 +38,7 @@ class _SignUpState extends State<SignUp> {
         color: const Color.fromARGB(88, 224, 214, 214),
         borderRadius: BorderRadius.circular(20),
       ),
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * .05),
       child: Form(
         key: _formKey,
         child: Column(
@@ -88,7 +88,6 @@ class _SignUpState extends State<SignUp> {
             ),
 
             //MAIL ENTRY
-            const SizedBox(height: 16.0),
             TextFormField(
               enableSuggestions: false,
               autocorrect: false,
@@ -111,7 +110,6 @@ class _SignUpState extends State<SignUp> {
             ),
 
             //PASSWORD ENTRY
-            const SizedBox(height: 16.0),
             TextFormField(
               enableSuggestions: false,
               autocorrect: false,
@@ -134,7 +132,6 @@ class _SignUpState extends State<SignUp> {
             ),
 
             //PASSWORD VALIDATION
-            const SizedBox(height: 16.0),
             TextFormField(
               enableSuggestions: false,
               autocorrect: false,
@@ -159,7 +156,6 @@ class _SignUpState extends State<SignUp> {
             ),
 
             //PHONE NUMBER ENTRY
-            const SizedBox(height: 16.0),
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Phone Number',
@@ -180,16 +176,13 @@ class _SignUpState extends State<SignUp> {
             ),
 
             // COUNTRY SELECTION
-            const Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: CountryPickerButton(),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height * .03),
+              child: const CountryPickerButton(),
             ),
 
             // REGISTER BUTTON
-            const SizedBox(
-              height: 32.0,
-              width: 120,
-            ),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
@@ -197,12 +190,6 @@ class _SignUpState extends State<SignUp> {
                 ),
                 overlayColor: MaterialStateProperty.all<Color>(
                   const Color.fromARGB(161, 236, 95, 224),
-                ),
-                minimumSize: MaterialStateProperty.all<Size>(
-                  const Size(10, 35),
-                ),
-                maximumSize: MaterialStateProperty.all<Size>(
-                  const Size(10, 45),
                 ),
               ),
               onPressed: _name == (null) ||

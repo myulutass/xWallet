@@ -46,9 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                child: Text(
+              Padding(
+                padding: EdgeInsets.all(
+                  MediaQuery.of(context).size.width * .1,
+                ),
+                child: const Text(
                   'Welcome back!',
                   style: TextStyle(
                     fontSize: 60,
@@ -63,22 +65,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: const Color.fromARGB(88, 224, 214, 214),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(
+                  MediaQuery.of(context).size.width * .05,
+                ),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       const Text(
                         'Log In',
                         style: TextStyle(
                           fontSize: 25,
-                          color: Colors.white,
-                          decoration: TextDecoration.underline,
+                          color: Color.fromARGB(255, 249, 242, 242),
                         ),
                       ),
                       // EMAIL ENTRY
-                      const SizedBox(height: 16.0),
                       TextFormField(
                         controller: _email,
                         enableSuggestions: false,
@@ -97,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
 
                       // PASSWORD ENTRY
-                      const SizedBox(height: 16.0),
                       TextFormField(
                         controller: _password,
                         enableSuggestions: false,
@@ -115,8 +117,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
 
-                      //...
-
                       TextButton(
                         onPressed: () =>
                             Navigator.pushNamed(context, route.passwordPage),
@@ -130,7 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 16.0),
                       ElevatedButton(
                         onPressed: () =>
                             Navigator.pushNamed(context, route.homePage),

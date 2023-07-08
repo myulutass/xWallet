@@ -64,7 +64,7 @@ class _FeedbackPageState extends State<FeedbackPage>
           // Robot Image
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('lib/assets/My project-1.png'),
+              image: const AssetImage('lib/assets/My project-1.png'),
               fit: BoxFit.cover,
               alignment: Alignment(
                 MediaQuery.of(context).size.height * .1,

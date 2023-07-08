@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:xwallet/components/balance_view.dart';
+import 'package:xwallet/Pages/Home%20Page/balance_view.dart';
 import 'package:xwallet/components/Drawer/drawer.dart';
-import '../api/api.dart';
-import 'market_page.dart';
-import '../components/action_buttons.dart';
-import '../components/user_assets.dart';
+import '../../api/api.dart';
+import '../market_page.dart';
+import 'action_buttons.dart';
+import 'user_assets.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 import 'package:xwallet/theme/theme.dart';
 

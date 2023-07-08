@@ -26,38 +26,35 @@ class MarketAsset {
 }
 
 Widget _buildMarketAssetTile(MarketAsset asset, int index) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-    child: Container(
-      color: index % 2 == 0 ? null : const Color.fromARGB(61, 32, 31, 31),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundImage: NetworkImage(asset.icon),
-        ),
-        title: Text(asset.name),
-        subtitle: Text(
-          asset.symbol.toUpperCase(),
-        ),
-        trailing: IntrinsicWidth(
-          child: Row(
-            children: [
-              AnimatedFlipCounter(
-                value: asset.priceUsd,
-                fractionDigits: 2,
-                suffix: '\$',
-                curve: Curves.easeInOut,
+  return Container(
+    color: index % 2 == 0 ? null : const Color.fromARGB(61, 32, 31, 31),
+    child: ListTile(
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(asset.icon),
+      ),
+      title: Text(asset.name),
+      subtitle: Text(
+        asset.symbol.toUpperCase(),
+      ),
+      trailing: IntrinsicWidth(
+        child: Row(
+          children: [
+            AnimatedFlipCounter(
+              value: asset.priceUsd,
+              fractionDigits: 2,
+              suffix: '\$',
+              curve: Curves.easeInOut,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              '${asset.priceChangePercentage24h.toStringAsFixed(2)}%',
+              style: TextStyle(
+                color: asset.priceChangePercentage24h > 0
+                    ? Colors.green
+                    : Colors.red,
               ),
-              const SizedBox(width: 8),
-              Text(
-                '${asset.priceChangePercentage24h.toStringAsFixed(2)}%',
-                style: TextStyle(
-                  color: asset.priceChangePercentage24h > 0
-                      ? Colors.green
-                      : Colors.red,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xwallet/Pages/feedback.dart';
 import 'package:xwallet/Pages/help_center.dart';
 import 'package:xwallet/components/forgot_password.dart';
-import 'package:xwallet/Pages/home_page.dart';
+import 'package:xwallet/Pages/Home%20Page/home_page.dart';
 import 'package:xwallet/Pages/login_Page.dart';
 import 'package:xwallet/main.dart';
 

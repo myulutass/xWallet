@@ -22,7 +22,7 @@ class CoinDropdownMenu extends StatelessWidget {
           child: Container(
             width: MediaQuery.of(context).size.width * .72,
             decoration: BoxDecoration(
-              color: const Color.fromARGB(98, 146, 141, 141),
+              color: const Color.fromARGB(25, 146, 141, 141),
               borderRadius: BorderRadius.circular(20),
             ),
             child: ListTile(
@@ -54,13 +54,15 @@ class CoinDropdownMenu extends StatelessWidget {
       );
     }).toList();
 
-    return DropdownButton<dynamic>(
-      underline: Container(),
-      dropdownColor: const Color.fromARGB(202, 42, 2, 46),
-      itemHeight: 80,
-      value: selectedValue,
-      items: items,
-      onChanged: onChanged,
+    return Center(
+      child: DropdownButton<dynamic>(
+        underline: Container(),
+        dropdownColor: const Color.fromARGB(202, 42, 2, 46),
+        itemHeight: 80,
+        value: selectedValue,
+        items: items,
+        onChanged: onChanged,
+      ),
     );
   }
 }
