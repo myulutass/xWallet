@@ -25,7 +25,7 @@ class _SignUpState extends State<SignUp> {
       // Do something with the form data, such as creating a new user
       // ...
       // After successful registration, navigate to the home screen
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home/');
     }
   }
 

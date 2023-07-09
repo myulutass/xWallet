@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xwallet/pop_ups/recieve.dart';
 import 'package:xwallet/pop_ups/send.dart';
 import 'package:xwallet/pop_ups/swap.dart';
-
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import '../market_page.dart';
 import '../../api/api.dart';
 
@@ -26,32 +26,39 @@ class _ActionButtonsState extends State<ActionButtons> {
   }
 
   void _showSwapDialog() {
-    showDialog(
-      barrierColor: const Color.fromARGB(183, 0, 0, 0),
-      context: context,
-      builder: (BuildContext context) => Swap(
-        topCurrenciesFuture: topCurrenciesFuture,
-      ),
-    );
+    showAnimatedDialog(
+        barrierColor: const Color.fromARGB(183, 0, 0, 0),
+        context: context,
+        builder: (BuildContext context) => Swap(
+              topCurrenciesFuture: topCurrenciesFuture,
+            ),
+        animationType: DialogTransitionType.slideFromBottomFade,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutSine);
   }
 
   void _showSendDialog() {
-    showDialog(
-      barrierColor: const Color.fromARGB(183, 0, 0, 0),
-      context: context,
-      builder: (BuildContext context) => Send(
-        topCurrenciesFuture: topCurrenciesFuture,
-      ),
-    );
+    showAnimatedDialog(
+        barrierColor: const Color.fromARGB(183, 0, 0, 0),
+        context: context,
+        builder: (BuildContext context) => Send(
+              topCurrenciesFuture: topCurrenciesFuture,
+            ),
+        animationType: DialogTransitionType.slideFromBottomFade,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutSine);
   }
 
   void _showRecieveDialog() {
-    showDialog(
+    showAnimatedDialog(
         barrierColor: const Color.fromARGB(183, 0, 0, 0),
         context: context,
         builder: (BuildContext context) => Recieve(
               topCurrenciesFuture: topCurrenciesFuture,
-            ));
+            ),
+        animationType: DialogTransitionType.slideFromBottomFade,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutSine);
   }
 
   @override

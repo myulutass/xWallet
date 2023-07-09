@@ -50,7 +50,7 @@ class _SendState extends State<Send> {
 
                       return Padding(
                         padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.width * .40),
+                            top: MediaQuery.of(context).size.width * .60),
                         child: Container(
                           width: MediaQuery.of(context).size.width * .85,
                           height: MediaQuery.of(context).size.height * .4,

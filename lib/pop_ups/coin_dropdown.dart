@@ -20,7 +20,7 @@ class CoinDropdownMenu extends StatelessWidget {
         value: coin.name,
         child: Center(
           child: Container(
-            width: MediaQuery.of(context).size.width * .72,
+            width: MediaQuery.of(context).size.width * .68,
             decoration: BoxDecoration(
               color: const Color.fromARGB(25, 146, 141, 141),
               borderRadius: BorderRadius.circular(20),

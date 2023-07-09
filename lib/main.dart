@@ -30,6 +30,9 @@ class RegisterScreen extends StatelessWidget {
       onGenerateRoute: route.controller,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          snackBarTheme: const SnackBarThemeData(
+            backgroundColor: Color.fromARGB(121, 0, 0, 0),
+          ),
           textTheme: GoogleFonts.manjariTextTheme(
             Theme.of(context).textTheme.apply(
                   displayColor: Colors.white,
