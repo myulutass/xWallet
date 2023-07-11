@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .05),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const BalanceView(),
               ActionButtons(topCurrenciesFuture: topCurrenciesFuture),
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
           selectedIndex = index;
         });
         controller.animateToPage(selectedIndex,
-            duration: const Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 250),
             curve: Curves.easeOutQuad);
       }),
       selectedIndex: selectedIndex,

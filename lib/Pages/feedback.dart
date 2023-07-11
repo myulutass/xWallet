@@ -14,6 +14,7 @@ class _FeedbackPageState extends State<FeedbackPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+
   void onSend() {
     _animationController.forward(from: -1);
   }

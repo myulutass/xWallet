@@ -19,7 +19,7 @@ class _CryptoListState extends State<CryptoList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .41,
+      height: MediaQuery.of(context).size.height * .40,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         color: const Color.fromARGB(0, 32, 33, 33),
@@ -38,7 +38,6 @@ class _CryptoListState extends State<CryptoList> {
                 var currency = currencies[index];
                 return Card(
                   color: Colors.transparent,
-                  shadowColor: const Color.fromARGB(15, 214, 214, 214),
                   surfaceTintColor: Colors.transparent,
                   child: ClipRect(
                     child: BackdropFilter(
@@ -48,6 +47,13 @@ class _CryptoListState extends State<CryptoList> {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromRGBO(195, 191, 191, 0.018),
+                              offset: Offset(0, 3),
+                              blurRadius: 3,
+                            ),
+                          ],
                           gradient: LinearGradient(
                             colors: [
                               const Color.fromARGB(255, 189, 184, 184)

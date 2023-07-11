@@ -1,6 +1,8 @@
 import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 // Background Theme
 Decoration? mainTheme() {
@@ -93,4 +95,32 @@ Widget customDivider() {
       ),
     ),
   );
+}
+
+class GradientTxt extends StatelessWidget {
+  final double fontsize;
+  final String text;
+  const GradientTxt({
+    super.key,
+    required this.text,
+    required this.fontsize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GradientText(
+      text,
+      style: GoogleFonts.getFont(
+        'Gruppo',
+        fontWeight: FontWeight.w600,
+        fontSize: fontsize,
+      ),
+      gradientType: GradientType.linear,
+      radius: 1.4,
+      colors: const [
+        Color.fromARGB(255, 114, 180, 218),
+        Color.fromARGB(255, 225, 148, 239),
+      ],
+    );
+  }
 }

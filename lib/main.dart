@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:xwallet/Pages/sign_up.dart';
 import 'package:xwallet/route/routes.dart' as route;
 import 'package:country_picker/country_picker.dart';
@@ -33,7 +32,13 @@ class RegisterScreen extends StatelessWidget {
           snackBarTheme: const SnackBarThemeData(
             backgroundColor: Color.fromARGB(121, 0, 0, 0),
           ),
-          textTheme: GoogleFonts.manjariTextTheme(
+          primaryTextTheme: GoogleFonts.nunitoTextTheme(
+            Theme.of(context).textTheme.apply(
+                  displayColor: Colors.white,
+                  bodyColor: Colors.white,
+                ),
+          ),
+          textTheme: GoogleFonts.nunitoTextTheme(
             Theme.of(context).textTheme.apply(
                   displayColor: Colors.white,
                   bodyColor: Colors.white,
@@ -65,29 +70,19 @@ class RegisterScreen extends StatelessWidget {
           primaryColor: Colors.white),
       home: Container(
         decoration: mainTheme(),
-        child: Scaffold(
+        child: const Scaffold(
           body: SingleChildScrollView(
             child: Column(
               children: [
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                  child: GradientText(
-                    'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
-                    style: GoogleFonts.getFont(
-                      'Gruppo',
-                      fontSize: 60,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    gradientType: GradientType.linear,
-                    radius: 1.4,
-                    colors: const [
-                      Color.fromARGB(255, 114, 180, 218),
-                      Color.fromARGB(255, 225, 148, 239),
-                    ],
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                  child: GradientTxt(
+                    fontsize: 60,
+                    text:
+                        'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
                   ),
                 ),
-                const SignUp(),
+                SignUp(),
               ],
             ),
           ),

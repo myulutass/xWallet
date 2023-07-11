@@ -8,7 +8,7 @@ import '../env/env.dart';
 Future<List<MarketAsset>> fetchTopCurrencies() async {
   try {
     final uri = Uri.parse(
-        'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=2&convert=USD');
+        'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=5&convert=USD');
     final response = await http.get(
       uri,
       headers: {

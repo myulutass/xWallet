@@ -52,6 +52,7 @@ dependencies:
   google_fonts: ^4.0.4
   flutter_animated_dialog: ^2.0.1
   share: ^2.0.1
+  flutter_svg: ^2.0.7
 
 
 dev_dependencies:
@@ -80,12 +81,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - lib/assets/[removal.ai]_520b09c7-11fe-4890-bb26-2ac9c98783b5.png
-      - C:/Users/yulut/xwallet/lib/assets/My project-1.png
+      - lib/assets/robot.png
+      - lib\assets\SwapIcon.svg
       - lib\assets\sheildIcon.png
       - lib\assets\startIcon.png
       - lib\assets\TrsnfrIcon.png
       - lib\assets\walletIcon.png
+      - lib\assets\SendIcon.svg
+      - lib\assets\SendIcon.svg
+      - lib\assets\RecieveIcon.svg
  
    
   #   - images/a_dot_burr.jpeg

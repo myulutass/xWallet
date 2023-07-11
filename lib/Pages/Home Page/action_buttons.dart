@@ -3,22 +3,30 @@ import 'package:xwallet/pop_ups/recieve.dart';
 import 'package:xwallet/pop_ups/send.dart';
 import 'package:xwallet/pop_ups/swap.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../theme/theme.dart';
 import '../market_page.dart';
 import '../../api/api.dart';
 
 class ActionButtons extends StatefulWidget {
   final Future<List<MarketAsset>>? topCurrenciesFuture;
 
-  const ActionButtons({Key? key, required this.topCurrenciesFuture})
-      : super(key: key);
+  const ActionButtons({
+    Key? key,
+    required this.topCurrenciesFuture,
+  }) : super(key: key);
 
   @override
   State<ActionButtons> createState() => _ActionButtonsState();
 }
 
 class _ActionButtonsState extends State<ActionButtons> {
-  late Future<List<MarketAsset>>? topCurrenciesFuture;
+  double _turnSend = 0.0;
+  double _turnSwap = 0.0;
+  double _turnRecieve = 0.0;
 
+  late Future<List<MarketAsset>>? topCurrenciesFuture;
   @override
   void initState() {
     super.initState();
@@ -33,7 +41,7 @@ class _ActionButtonsState extends State<ActionButtons> {
               topCurrenciesFuture: topCurrenciesFuture,
             ),
         animationType: DialogTransitionType.slideFromBottomFade,
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutSine);
   }
 
@@ -45,74 +53,124 @@ class _ActionButtonsState extends State<ActionButtons> {
               topCurrenciesFuture: topCurrenciesFuture,
             ),
         animationType: DialogTransitionType.slideFromBottomFade,
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutSine);
   }
 
-  void _showRecieveDialog() {
-    showAnimatedDialog(
+  _showRecieveDialog() {
+    return showAnimatedDialog(
         barrierColor: const Color.fromARGB(183, 0, 0, 0),
         context: context,
         builder: (BuildContext context) => Recieve(
               topCurrenciesFuture: topCurrenciesFuture,
             ),
         animationType: DialogTransitionType.slideFromBottomFade,
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutSine);
+  }
+
+  Widget _sendButton() {
+    return AnimatedRotation(
+      turns: _turnSend,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOutCubic,
+      child: IconButton(
+        onPressed: () {
+          _showSendDialog();
+          setState(() {
+            _turnSend += -1;
+          });
+        },
+        icon: SvgPicture.asset('lib/assets/SendIcon.svg'),
+        iconSize: MediaQuery.of(context).size.width * .12,
+      ),
+    );
+  }
+
+  Widget _swapButton() {
+    return AnimatedRotation(
+      turns: _turnSwap,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOutCubic,
+      child: IconButton(
+        onPressed: () {
+          _showSwapDialog();
+          setState(() {
+            _turnSwap += 1;
+          });
+        },
+        icon: SvgPicture.asset('lib/assets/SwapIcon.svg'),
+        iconSize: MediaQuery.of(context).size.width * .12,
+      ),
+    );
+  }
+
+  Widget _recieveButton() {
+    return AnimatedRotation(
+      turns: _turnRecieve,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOutCubic,
+      child: IconButton(
+        onPressed: () {
+          setState(() {
+            _turnRecieve += -0.1;
+          });
+          _showRecieveDialog().then((_) {
+            setState(() {
+              // Rotate the icon back when popup is closed
+              _turnRecieve -= -0.1;
+            });
+          });
+        },
+        icon: SvgPicture.asset('lib/assets/RecieveIcon.svg'),
+        iconSize: MediaQuery.of(context).size.width * .12,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30, top: 0),
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .04),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
             children: [
-              FloatingActionButton(
-                heroTag: 'send',
-                onPressed: () {
-                  _showSendDialog();
-                },
-                backgroundColor: const Color.fromARGB(27, 255, 255, 255),
-                child: const Icon(Icons.send),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 15),
-                child: Text('Send'),
+              _sendButton(),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * .02),
+                child: const GradientTxt(
+                  text: 'Send',
+                  fontsize: 17,
+                ),
               ),
             ],
           ),
           Column(
             children: [
-              FloatingActionButton(
-                heroTag: 'swap',
-                onPressed: () {
-                  _showSwapDialog();
-                },
-                backgroundColor: const Color.fromARGB(27, 255, 255, 255),
-                child: const Icon(Icons.swap_calls),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 15),
-                child: Text('Swap'),
+              _swapButton(),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * .02),
+                child: const GradientTxt(
+                  text: 'Swap',
+                  fontsize: 17,
+                ),
               ),
             ],
           ),
           Column(
             children: [
-              FloatingActionButton(
-                heroTag: 'receive',
-                onPressed: () {
-                  _showRecieveDialog();
-                },
-                backgroundColor: const Color.fromARGB(27, 255, 255, 255),
-                child: const Icon(Icons.call_received_outlined),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 15),
-                child: Text('Receive'),
+              _recieveButton(),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * .02),
+                child: const GradientTxt(
+                  text: 'Recieve',
+                  fontsize: 17,
+                ),
               ),
             ],
           ),
