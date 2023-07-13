@@ -3,7 +3,7 @@ import 'package:xwallet/Pages/Home%20Page/balance_view.dart';
 import 'package:xwallet/components/Drawer/drawer.dart';
 import '../../api/api.dart';
 import '../market_page.dart';
-import 'action_buttons.dart';
+import 'Action Buttons/action_buttons.dart';
 import 'user_assets.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 import 'package:xwallet/theme/theme.dart';
@@ -41,17 +41,6 @@ class _HomePageState extends State<HomePage> {
 
   PreferredSizeWidget _buildHomePageAppBar() {
     return AppBar(
-      title: Align(
-        alignment: const Alignment(-0.17, 0),
-        child: Transform.rotate(
-          angle: 1.58,
-          child: Image.asset(
-            'lib/assets/[removal.ai]_520b09c7-11fe-4890-bb26-2ac9c98783b5.png',
-            scale: 7,
-            height: kToolbarHeight * 2,
-          ),
-        ),
-      ),
       backgroundColor: const Color.fromARGB(22, 0, 0, 0),
     );
   }
@@ -70,7 +59,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const BalanceView(),
-              ActionButtons(topCurrenciesFuture: topCurrenciesFuture),
+              const ActionButtons(),
               CryptoList(topCurrenciesFuture: topCurrenciesFuture),
             ],
           ),

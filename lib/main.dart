@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                   bodyColor: Colors.white,
                 ),
           ),
-          textTheme: GoogleFonts.nunitoTextTheme(
+          textTheme: GoogleFonts.ptSansTextTheme(
             Theme.of(context).textTheme.apply(
                   displayColor: Colors.white,
                   bodyColor: Colors.white,
@@ -49,7 +49,6 @@ class RegisterScreen extends StatelessWidget {
               color: Colors.white,
             ),
             bodyMedium: const TextStyle(
-              fontWeight: FontWeight.w400,
               color: Colors.white,
             ),
           ),
