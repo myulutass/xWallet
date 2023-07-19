@@ -9,7 +9,7 @@ var memoryCache = MemoryCache();
 
 Future<List<MarketAsset>> fetchTopCurrencies() async {
   var url =
-      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=20&convert=USD';
+      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=12&convert=USD';
 
   try {
     var data = await memoryCache.get(url, () async {
