@@ -20,9 +20,7 @@ Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
     case homePage:
       return MaterialPageRoute(
-        builder: (context) => HomePage(
-          showSwapDialog: (p0) {},
-        ),
+        builder: (context) => const HomePage(),
       );
     case passwordPage:
       return MaterialPageRoute(

@@ -10,16 +10,8 @@ import 'package:xwallet/theme/theme.dart';
 
 // Define HomePage StatefulWidget
 class HomePage extends StatefulWidget {
-  final String? selectedCoin1;
-  final String? selectedCoin2;
-  final void Function(BuildContext) showSwapDialog;
-
-  // Constructor for HomePage with optional named parameters
   const HomePage({
     Key? key,
-    this.selectedCoin1,
-    this.selectedCoin2,
-    required this.showSwapDialog,
   }) : super(key: key);
 
   @override

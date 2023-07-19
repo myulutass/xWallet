@@ -15,7 +15,6 @@ class ActionButtons extends StatefulWidget {
 }
 
 class _ActionButtonsState extends State<ActionButtons> {
-  late Future<List<MarketAsset>>? topCurrenciesFuture;
   @override
   void initState() {
     super.initState();
