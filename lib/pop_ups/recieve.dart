@@ -3,7 +3,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
-import '../Pages/market_page.dart';
+import '../api/api.dart';
 import 'coin_dropdown.dart';
 
 class Recieve extends StatefulWidget {

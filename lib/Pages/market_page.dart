@@ -2,36 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'dart:async';
 
-class MarketAsset {
-  final String icon;
-  final String name;
-  final String symbol;
-  final double priceUsd;
-  final double priceChangePercentage24h;
-  Map<String, dynamic> toMap() {
-    return {
-      'icon': symbol,
-      'name': name,
-      'USD': priceUsd,
-    };
-  }
-
-  MarketAsset({
-    required this.icon,
-    required this.name,
-    required this.symbol,
-    required this.priceUsd,
-    required this.priceChangePercentage24h,
-  });
-}
+import '../api/api.dart';
+import '../theme/svg_icons.dart';
 
 Widget _buildMarketAssetTile(MarketAsset asset, int index) {
   return Container(
     color: index % 2 == 0 ? null : const Color.fromARGB(61, 32, 31, 31),
     child: ListTile(
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(asset.icon),
-      ),
+      leading: getIcon(asset.symbol),
       title: Text(asset.name),
       subtitle: Text(
         asset.symbol.toUpperCase(),

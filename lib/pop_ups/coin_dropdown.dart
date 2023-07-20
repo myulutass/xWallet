@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Pages/market_page.dart';
+
+import '../api/api.dart';
+import '../theme/svg_icons.dart';
 
 class CoinDropdownMenu extends StatelessWidget {
   final List<MarketAsset> coins;
@@ -27,9 +29,7 @@ class CoinDropdownMenu extends StatelessWidget {
             ),
             child: ListTile(
               horizontalTitleGap: MediaQuery.of(context).size.width * .05,
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(coin.icon),
-              ),
+              leading: getIcon(coin.symbol),
               title: Text(
                 coin.name,
                 style: const TextStyle(

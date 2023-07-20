@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:xwallet/Pages/market_page.dart';
 import 'package:xwallet/pop_ups/coin_dropdown.dart';
+
+import '../api/api.dart';
 
 class Swap extends StatefulWidget {
   final Future<List<MarketAsset>>? topCurrenciesFuture;

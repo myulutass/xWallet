@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:xwallet/Pages/market_page.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:xwallet/theme/glass.dart';
+
+import '../../api/api.dart';
+import '../../theme/svg_icons.dart';
 
 class CryptoList extends StatefulWidget {
   final Future<List<MarketAsset>>? topCurrenciesFuture;
@@ -52,9 +54,7 @@ class _CryptoListState extends State<CryptoList> {
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.2,
                           child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(currency.icon),
-                            ),
+                            leading: getIcon(currency.symbol),
                             title: Text(
                               currency.name,
                               style: const TextStyle(
