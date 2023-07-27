@@ -5,8 +5,8 @@ import '../../api/api.dart';
 import '../market_page.dart';
 import 'Action Buttons/action_buttons.dart';
 import 'user_assets.dart';
-import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
-import 'package:xwallet/theme/theme.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 
 // Define HomePage StatefulWidget
 class HomePage extends StatefulWidget {
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   PreferredSizeWidget _buildHomePageAppBar() {
     return AppBar(
-      backgroundColor: const Color.fromARGB(22, 0, 0, 0),
+      backgroundColor: const Color.fromARGB(15, 0, 0, 0),
     );
   }
 
@@ -41,14 +41,21 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildHomePageBody() {
     return PageView(
-      physics: const NeverScrollableScrollPhysics(),
+      onPageChanged: (page) {
+        setState(() {
+          selectedIndex = page;
+        });
+        controller.animateToPage(page,
+            duration: const Duration(milliseconds: 250), curve: Curves.linear);
+      },
+      physics: const ScrollPhysics(),
       controller: controller,
       children: [
         Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .05),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const BalanceView(),
               const ActionButtons(),
@@ -66,37 +73,44 @@ class _HomePageState extends State<HomePage> {
 // Bottom Navigation Bar Build
 
   Widget _buildBottomNavigationBar() {
-    return SlidingClippedNavBar(
-      onButtonPressed: ((index) {
+    return DotNavigationBar(
+      marginR: const EdgeInsets.symmetric(
+        horizontal: 75,
+      ),
+      backgroundColor: const Color.fromARGB(22, 0, 0, 0),
+      enableFloatingNavBar: true,
+      currentIndex: selectedIndex,
+      onTap: (index) {
         setState(() {
           selectedIndex = index;
         });
         controller.animateToPage(selectedIndex,
-            duration: const Duration(milliseconds: 250),
-            curve: Curves.easeOutQuad);
-      }),
-      selectedIndex: selectedIndex,
-      activeColor: const Color.fromARGB(255, 222, 222, 222),
-      iconSize: 30,
-      backgroundColor: const Color.fromARGB(255, 140, 53, 255),
-      barItems: [
-        BarItem(title: 'Wallet', icon: Icons.wallet),
-        BarItem(title: 'Market', icon: Icons.shopping_cart)
+            duration: const Duration(milliseconds: 250), curve: Curves.linear);
+      },
+      items: [
+        /// Home
+        DotNavigationBarItem(
+          icon: const Icon(LineIcons.wallet),
+          selectedColor: Colors.pink,
+        ),
+
+        /// Likes
+        DotNavigationBarItem(
+          icon: const Icon(LineIcons.shoppingBag),
+          selectedColor: Colors.pink,
+        ),
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: mainTheme(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: _buildHomePageAppBar(),
-        drawer: const SideDrawer(),
-        body: _buildHomePageBody(),
-        bottomNavigationBar: _buildBottomNavigationBar(),
-      ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: _buildHomePageAppBar(),
+      drawer: const SideDrawer(),
+      body: _buildHomePageBody(),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 }

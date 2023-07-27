@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../api/api.dart';
 import '../../../pop_ups/recieve.dart';
-import '../../market_page.dart';
 
 class RecieveButton extends StatefulWidget {
   const RecieveButton({super.key});

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../cache/base_cache.dart';
-import 'package:flutter_svg/svg.dart';
 
 class MarketAsset {
   String name;

@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../api/api.dart';
 import '../../../pop_ups/swap.dart';
-import '../../market_page.dart';
 
 class SwapButton extends StatefulWidget {
   const SwapButton({super.key});

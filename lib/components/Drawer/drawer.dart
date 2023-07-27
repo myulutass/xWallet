@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:provider/provider.dart';
 import 'package:xwallet/components/Drawer/app_lang.dart';
 import 'package:xwallet/components/Drawer/lock_method.dart';
 import 'package:xwallet/route/routes.dart' as route;
+import 'package:xwallet/theme/lightdark.dart';
 import 'package:xwallet/theme/theme.dart';
 
 class SideDrawer extends StatefulWidget {
@@ -16,6 +19,22 @@ class _SideDrawerState extends State<SideDrawer> {
   String _selectedCurrency = 'USD';
   bool _appLock = false;
   bool _appLockActivated = false;
+
+// Theme Selection
+  void _changeTheme(BuildContext context) {
+    Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+  }
+
+  Widget _lightDarkSwitch(BuildContext context) {
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, _) => Switch(
+        value: themeProvider.isLightDark, // Check the current theme status
+        onChanged: (value) {
+          themeProvider.toggleTheme(); // Toggle when switch state changes
+        },
+      ),
+    );
+  }
 
 // Currency Selection Build
 
@@ -45,7 +64,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildHelpCenterListTile() {
     return ListTile(
       leading: const GradientIcon(
-        icon: Icon(Icons.help),
+        icon: Icon(LineIcons.questionCircle),
       ),
       title: const Text('Help Center'),
       onTap: () => Navigator.pushNamed(context, route.helpPage),
@@ -57,7 +76,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildFeedbackListTile() {
     return ListTile(
       leading: const GradientIcon(
-        icon: Icon(Icons.feedback),
+        icon: Icon(LineIcons.helpingHands),
       ),
       title: const Text('Give Feedback'),
       onTap: () => Navigator.pushNamed(context, route.feedbackPage),
@@ -69,7 +88,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildLogOutListTile() {
     return ListTile(
       leading: const GradientIcon(
-        icon: Icon(Icons.logout),
+        icon: Icon(LineIcons.doorOpen),
       ),
       title: const Text(
         'Log Out',
@@ -86,7 +105,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildSecurityExpansionTile() {
     return ExpansionTile(
       leading: const GradientIcon(
-        icon: Icon(Icons.security),
+        icon: Icon(LineIcons.alternateShield),
       ),
       title: const Text('Security'),
       children: [
@@ -95,7 +114,7 @@ class _SideDrawerState extends State<SideDrawer> {
         ),
         ListTile(
           title: const Text('AppLock'),
-          trailing: CupertinoSwitch(
+          trailing: Switch(
             value: _appLock,
             onChanged: (bool value) {
               setState(
@@ -125,7 +144,7 @@ class _SideDrawerState extends State<SideDrawer> {
   Widget _buildPreferencesExpansionTile() {
     return ExpansionTile(
       leading: const GradientIcon(
-        icon: Icon(Icons.settings),
+        icon: Icon(LineIcons.edit),
       ),
       title: const Text('Preferences'),
       children: [
@@ -136,6 +155,10 @@ class _SideDrawerState extends State<SideDrawer> {
         const ListTile(
           title: Text('App Languge'),
           trailing: AppLanguage(),
+        ),
+        ListTile(
+          title: const Text('Change App Theme'),
+          trailing: _lightDarkSwitch(context),
         )
       ],
     );

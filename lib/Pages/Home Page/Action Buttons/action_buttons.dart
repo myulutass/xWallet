@@ -3,8 +3,6 @@ import 'package:xwallet/Pages/Home%20Page/Action%20Buttons/receive_button.dart';
 import 'package:xwallet/Pages/Home%20Page/Action%20Buttons/send_button.dart';
 import 'package:xwallet/Pages/Home%20Page/Action%20Buttons/swap_button.dart';
 
-import '../../market_page.dart';
-
 class ActionButtons extends StatefulWidget {
   const ActionButtons({
     Key? key,

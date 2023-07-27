@@ -33,17 +33,19 @@ class _SwapState extends State<Swap> {
   }
 
   Widget _buildSwapContainer(List<MarketAsset> coins) {
-    return Container(
-      width: MediaQuery.of(context).size.width * .85,
-      height: MediaQuery.of(context).size.height * .4,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(80, 47, 4, 90),
-        border: Border.all(
-          color: const Color.fromARGB(255, 116, 116, 116),
+    return Center(
+      child: Container(
+        width: MediaQuery.of(context).size.width * .85,
+        height: MediaQuery.of(context).size.height * .4,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(80, 47, 4, 90),
+          border: Border.all(
+            color: const Color.fromARGB(255, 116, 116, 116),
+          ),
+          borderRadius: BorderRadius.circular(20),
         ),
-        borderRadius: BorderRadius.circular(20),
+        child: _buildSwapColumn(coins),
       ),
-      child: _buildSwapColumn(coins),
     );
   }
 
@@ -64,9 +66,23 @@ class _SwapState extends State<Swap> {
           turns: _turns,
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOutCubic,
-          child: const Icon(
-            Icons.swap_calls,
-            color: Colors.white,
+          child: IconButton(
+            icon: const Icon(
+              Icons.swap_calls,
+              color: Colors.white,
+              size: 30,
+            ),
+            onPressed: () {
+              if (selectedCoin1 != null && selectedCoin2 != null) {
+                // Handle swap logic here
+                String temp = selectedCoin1!;
+                setState(() {
+                  selectedCoin1 = selectedCoin2;
+                  selectedCoin2 = temp;
+                  _turns += 0.5;
+                });
+              }
+            },
           ),
         ),
         CoinDropdownMenu(
@@ -103,7 +119,9 @@ class _SwapState extends State<Swap> {
         Navigator.of(context).pop();
       },
       child: Scaffold(
-        body: Center(
+        body: Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).size.width * .3),
           child: FutureBuilder<List<MarketAsset>>(
             future: widget.topCurrenciesFuture,
             builder: (context, snapshot) {

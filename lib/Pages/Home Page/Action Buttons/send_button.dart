@@ -4,7 +4,6 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../api/api.dart';
-import '../../market_page.dart';
 
 class SendButton extends StatefulWidget {
   const SendButton({super.key});

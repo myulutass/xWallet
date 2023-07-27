@@ -1,13 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:xwallet/Pages/sign_up.dart';
 import 'package:xwallet/route/routes.dart' as route;
 import 'package:country_picker/country_picker.dart';
+import 'package:xwallet/theme/lightdark.dart';
+import 'package:xwallet/theme/main_theme.dart';
 import 'package:xwallet/theme/theme.dart';
 
 void main() {
-  runApp(const RegisterScreen());
+  runApp(
+    ChangeNotifierProvider<ThemeProvider>(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LightDark(
+      child: MaterialApp(
+        supportedLocales: const [
+          Locale('el'),
+          Locale('en'),
+        ],
+        localizationsDelegates: const [
+          CountryLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        onGenerateRoute: route.controller,
+        debugShowCheckedModeBanner: false,
+        theme: MainTheme().getTheme(),
+        home: const RegisterScreen(),
+      ),
+    );
+  }
 }
 
 class RegisterScreen extends StatelessWidget {
@@ -15,76 +48,20 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      supportedLocales: const [
-        Locale('el'),
-        Locale('en'),
-      ],
-      localizationsDelegates: const [
-        CountryLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      onGenerateRoute: route.controller,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          snackBarTheme: const SnackBarThemeData(
-            backgroundColor: Color.fromARGB(121, 0, 0, 0),
-          ),
-          primaryTextTheme: GoogleFonts.nunitoTextTheme(
-            Theme.of(context).textTheme.apply(
-                  displayColor: Colors.white,
-                  bodyColor: Colors.white,
-                ),
-          ),
-          textTheme: GoogleFonts.ptSansTextTheme(
-            Theme.of(context).textTheme.apply(
-                  displayColor: Colors.white,
-                  bodyColor: Colors.white,
-                ),
-          ).copyWith(
-            bodyLarge: const TextStyle(
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-            ),
-            bodyMedium: const TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-              maximumSize: MaterialStateProperty.all<Size>(
-                const Size(80, 80),
-              ),
-              backgroundColor: MaterialStateProperty.all<Color>(
-                Colors.transparent,
-              ),
-              overlayColor: MaterialStateProperty.all<Color>(
-                const Color.fromARGB(161, 236, 95, 224),
+    return const Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              child: GradientTxt(
+                fontsize: 60,
+                text:
+                    'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
               ),
             ),
-          ),
-          scaffoldBackgroundColor: Colors.transparent,
-          primaryColor: Colors.white),
-      home: Container(
-        decoration: mainTheme(),
-        child: const Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                  child: GradientTxt(
-                    fontsize: 60,
-                    text:
-                        'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
-                  ),
-                ),
-                SignUp(),
-              ],
-            ),
-          ),
+            SignUp(),
+          ],
         ),
       ),
     );

@@ -4,21 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-// Background Theme
-Decoration? mainTheme() {
-  return const BoxDecoration(
-    gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      stops: [0.33, 0.66, 0.99],
-      colors: [
-        Color.fromARGB(255, 105, 57, 250),
-        Color.fromARGB(167, 215, 73, 240),
-        Color.fromARGB(255, 230, 216, 255),
-      ],
-    ),
-  );
-}
+// Main Dark Theme
 
 // Border Theme
 GradientBoxBorder gradientBorder() {
