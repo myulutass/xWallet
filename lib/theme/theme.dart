@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-// Main Dark Theme
-
 // Border Theme
 GradientBoxBorder gradientBorder() {
   return const GradientBoxBorder(

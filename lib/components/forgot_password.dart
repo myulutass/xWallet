@@ -1,77 +1,92 @@
 import 'package:flutter/material.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+Future passwordReset(BuildContext context) {
+  final TextEditingController email =
+      TextEditingController(); // Initialize _email here
 
-  @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
-}
-
-class _ForgotPasswordState extends State<ForgotPassword> {
-  @override
-  Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-
-    return Material(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 25,
+  return showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        var keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+        return Container(
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(89, 70, 3, 97),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(54, 0, 0, 0),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 16.0),
-                  const Text(
-                    'Reset Password',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.white,
+          ),
+          child: AnimatedPadding(
+            padding: EdgeInsets.only(bottom: keyboardHeight),
+            duration: const Duration(milliseconds: 50),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width) *
+                    .1,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      //LABEL TEXT
+                      height: MediaQuery.of(context).size.height * .03,
                     ),
-                  ),
-                  const SizedBox(height: 16.0),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 22),
-                    child: TextFormField(
-                      controller: emailController,
+                    const Text(
+                      'Please enter your email address to receive a password reset link',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        letterSpacing: 1,
+                        wordSpacing: 2,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .03,
+                    ),
+                    //EMAIL ENTRY
+                    TextFormField(
+                      controller: email,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        labelText: 'Email',
+                        filled: true,
+                        fillColor: Color.fromARGB(92, 247, 239, 239),
+                        label: Text(
+                          'Email',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            color: Color.fromARGB(181, 242, 233, 233),
+                          ),
+                        ),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email address';
-                        }
-                        // Add more email validation rules if needed
-                        return null;
-                      },
                     ),
-                  ),
-                  const SizedBox(height: 16.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Send password reset email and close modal
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Send'),
-                  ),
-                  const SizedBox(height: 16.0),
-                ],
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .03,
+                    ),
+                    SizedBox(
+                      //SEND BUTTON
+                      width: MediaQuery.of(context).size.width * .4,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Send a reset link',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, letterSpacing: 0.6),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .03,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
+        );
+      });
 }

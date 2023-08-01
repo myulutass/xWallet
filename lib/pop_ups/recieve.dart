@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:share/share.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:xwallet/theme/theme.dart';
 
 import '../api/api.dart';
 import 'coin_dropdown.dart';
@@ -125,9 +127,11 @@ class _RecieveState extends State<Recieve> {
                                           ),
                                         );
                                       },
-                                      icon: const Icon(
-                                        Icons.copy,
-                                        color: Colors.white,
+                                      icon: const GradientIcon(
+                                        icon: Icon(
+                                          LineIcons.copy,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                     const Text(
@@ -143,9 +147,11 @@ class _RecieveState extends State<Recieve> {
                                       onPressed: () {
                                         Share.share('www.example.com');
                                       },
-                                      icon: const Icon(
-                                        Icons.share,
-                                        color: Colors.white,
+                                      icon: const GradientIcon(
+                                        icon: Icon(
+                                          LineIcons.shareSquare,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                     const Text(

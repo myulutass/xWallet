@@ -13,7 +13,6 @@ class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
-  String _surname = '';
 
   String _email = '';
   String _password = '';
@@ -32,7 +31,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 1.05,
+      height: MediaQuery.of(context).size.height * .80,
       width: MediaQuery.of(context).size.width * .85,
       decoration: BoxDecoration(
         color: const Color.fromARGB(88, 224, 214, 214),
@@ -55,7 +54,7 @@ class _SignUpState extends State<SignUp> {
             //USERNAME ENTRY
             TextFormField(
               decoration: const InputDecoration(
-                labelText: 'Name',
+                labelText: 'User Name',
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -66,23 +65,6 @@ class _SignUpState extends State<SignUp> {
               onChanged: (value) {
                 setState(() {
                   _name = value;
-                });
-              },
-            ),
-            //SURNAME ENTRY
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Surname',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a surname';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  _surname = value;
                 });
               },
             ),
@@ -193,7 +175,6 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               onPressed: _name == (null) ||
-                      _surname == (null) ||
                       _email == (null) ||
                       _password == (null) ||
                       _passwordConfirm == (null) ||
@@ -207,7 +188,6 @@ class _SignUpState extends State<SignUp> {
                   : _submitForm,
               child: Opacity(
                 opacity: _name == (null) ||
-                        _surname == (null) ||
                         _email == (null) ||
                         _password == (null) ||
                         _passwordConfirm == (null) ||

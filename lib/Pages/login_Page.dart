@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xwallet/components/forgot_password.dart';
 import 'package:xwallet/route/routes.dart' as route;
-import 'package:xwallet/theme/button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -51,8 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: const Text(
                 'Welcome back!',
                 style: TextStyle(
-                  fontSize: 60,
-                  color: Colors.white,
+                  fontSize: 50,
                 ),
               ),
             ),
@@ -74,10 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     const Text(
                       'Log In',
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Color.fromARGB(255, 249, 242, 242),
-                      ),
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
                     ),
                     // EMAIL ENTRY
                     TextFormField(
@@ -115,23 +112,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
 
+                    // Forgot Password Button
+
                     TextButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, route.passwordPage),
+                      onPressed: () => passwordReset(context),
                       child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          decoration: TextDecoration.underline,
-                        ),
+                            fontSize: 18,
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.w300),
                       ),
                     ),
 
                     ElevatedButton(
                       onPressed: () =>
                           Navigator.pushNamed(context, route.homePage),
-                      child: const Text('Login'),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () =>
@@ -139,8 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         'Don\'t  have an account? click here to register',
                         style: TextStyle(
-                          fontSize: 11,
-                        ),
+                            fontSize: 11, fontWeight: FontWeight.w600),
                       ),
                     ),
                   ],

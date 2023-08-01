@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
@@ -19,11 +18,6 @@ class _SideDrawerState extends State<SideDrawer> {
   String _selectedCurrency = 'USD';
   bool _appLock = false;
   bool _appLockActivated = false;
-
-// Theme Selection
-  void _changeTheme(BuildContext context) {
-    Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-  }
 
   Widget _lightDarkSwitch(BuildContext context) {
     return Consumer<ThemeProvider>(
@@ -157,7 +151,7 @@ class _SideDrawerState extends State<SideDrawer> {
           trailing: AppLanguage(),
         ),
         ListTile(
-          title: const Text('Change App Theme'),
+          title: const Text('Dark Theme'),
           trailing: _lightDarkSwitch(context),
         )
       ],

@@ -18,6 +18,9 @@ class _ActionButtonsState extends State<ActionButtons> {
     super.initState();
   }
 
+  final TextStyle myStyle = const TextStyle(
+      fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.7);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,8 +35,9 @@ class _ActionButtonsState extends State<ActionButtons> {
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * .02),
-                child: const Text(
+                child: Text(
                   'Send',
+                  style: myStyle,
                 ),
               ),
             ],
@@ -45,8 +49,9 @@ class _ActionButtonsState extends State<ActionButtons> {
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * .008),
-                child: const Text(
+                child: Text(
                   'Swap',
+                  style: myStyle,
                 ),
               ),
             ],
@@ -58,8 +63,9 @@ class _ActionButtonsState extends State<ActionButtons> {
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * .02),
-                child: const Text(
+                child: Text(
                   'Receieve',
+                  style: myStyle,
                 ),
               ),
             ],

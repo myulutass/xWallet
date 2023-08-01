@@ -10,9 +10,14 @@ Widget _buildMarketAssetTile(MarketAsset asset, int index) {
     color: index % 2 == 0 ? null : const Color.fromARGB(61, 32, 31, 31),
     child: ListTile(
       leading: getIcon(asset.symbol),
-      title: Text(asset.name),
+      title: Text(
+        asset.name,
+        style: const TextStyle(fontWeight: FontWeight.w600),
+      ),
       subtitle: Text(
         asset.symbol.toUpperCase(),
+        style: const TextStyle(
+            fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 1),
       ),
       trailing: IntrinsicWidth(
         child: Row(
@@ -20,7 +25,8 @@ Widget _buildMarketAssetTile(MarketAsset asset, int index) {
             AnimatedFlipCounter(
               value: asset.priceUsd,
               fractionDigits: 2,
-              suffix: '\$',
+              thousandSeparator: '.',
+              prefix: '\$',
               curve: Curves.easeInOut,
             ),
             const SizedBox(width: 8),

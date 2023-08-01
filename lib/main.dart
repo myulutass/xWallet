@@ -48,11 +48,11 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: GradientTxt(
                 fontsize: 60,
@@ -60,7 +60,10 @@ class RegisterScreen extends StatelessWidget {
                     'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
               ),
             ),
-            SignUp(),
+            const SignUp(),
+            SizedBox(
+              height: MediaQuery.of(context).size.width * .15,
+            )
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xwallet/pop_ups/coin_dropdown.dart';
+import 'package:xwallet/theme/theme.dart';
 
 import '../api/api.dart';
 
@@ -67,10 +68,12 @@ class _SwapState extends State<Swap> {
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOutCubic,
           child: IconButton(
-            icon: const Icon(
-              Icons.swap_calls,
-              color: Colors.white,
-              size: 30,
+            icon: const GradientIcon(
+              icon: Icon(
+                Icons.swap_calls,
+                color: Colors.white,
+                size: 30,
+              ),
             ),
             onPressed: () {
               if (selectedCoin1 != null && selectedCoin2 != null) {

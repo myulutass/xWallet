@@ -97,7 +97,7 @@ class _CardItem extends StatelessWidget {
                 leading: getIcon(currency.symbol),
                 title: Text(
                   currency.name,
-                  style: const TextStyle(fontWeight: FontWeight.normal),
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 subtitle: Align(
                   alignment: Alignment.topLeft,
@@ -109,7 +109,7 @@ class _CardItem extends StatelessWidget {
                     thousandSeparator: '.',
                     textStyle: const TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.normal,
+                      letterSpacing: 1,
                     ),
                   ),
                 ),

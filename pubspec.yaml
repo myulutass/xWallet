@@ -58,6 +58,7 @@ dependencies:
   provider: ^6.0.1
   dot_navigation_bar: ^1.0.2
   line_icons: ^2.0.3
+  flutter_launcher_icons: ^0.13.1
 
 
 
@@ -110,6 +111,7 @@ flutter:
       - lib\assets\shiba-inu-shib-logo.svg
       - lib\assets\stellar-xlm-logo.svg
       - lib\assets\litecoin-ltc-logo.svg
+      - lib\assets\AppIcon.png
 
 
    
@@ -153,3 +155,8 @@ uses-material-design: true
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
  
+flutter_launcher_icons: 
+
+  android: true  
+  ios: true
+  image_path: 'lib\assets\AppIcon.png' 
