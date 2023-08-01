@@ -7,6 +7,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:xwallet/theme/lightdark.dart';
 import 'package:xwallet/theme/main_theme.dart';
 import 'package:xwallet/theme/theme.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
   runApp(
@@ -37,7 +38,29 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: route.controller,
         debugShowCheckedModeBanner: false,
         theme: MainTheme().getTheme(),
-        home: const RegisterScreen(),
+        home: AnimatedSplashScreen(
+          splash: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: const AssetImage('lib/assets/AppIcon.png'),
+                width: MediaQuery.of(context).size.width * .35,
+                filterQuality: FilterQuality.high,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width * .05,
+              ),
+              const GradientTxt(
+                text: 'xWallet',
+                fontsize: 18,
+              ),
+            ],
+          ),
+          nextScreen: const RegisterScreen(),
+          backgroundColor: const Color.fromARGB(255, 25, 24, 24),
+          splashTransition: SplashTransition.fadeTransition,
+          splashIconSize: double.infinity,
+        ),
       ),
     );
   }
