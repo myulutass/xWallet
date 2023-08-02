@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/api.dart';
+import '../theme/main_theme.dart';
 import 'coin_dropdown.dart';
 
 class Send extends StatefulWidget {
@@ -117,6 +118,7 @@ class _SendState extends State<Send> {
                                 ElevatedButton(
                                   // SEND BUTTON
                                   onPressed: () {},
+                                  style: secondaryButtonTheme(context),
                                   child: const Text('Send'),
                                 ),
                               ],

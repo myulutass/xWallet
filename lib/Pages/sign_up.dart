@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
 import 'package:xwallet/route/routes.dart' as route;
-import 'package:xwallet/components/country_pick.dart';
+import 'package:xwallet/theme/glass.dart';
+import 'package:xwallet/theme/main_theme.dart';
+import 'package:xwallet/theme/theme.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -10,6 +13,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  SizedBox emptySpace() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.width * .05,
+    );
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
@@ -30,188 +39,162 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * .80,
-      width: MediaQuery.of(context).size.width * .85,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(88, 224, 214, 214),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      padding: EdgeInsets.all(MediaQuery.of(context).size.width * .05),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const Text(
-              'Sign Up',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
+    return GlassMorphism(
+      start: 0.4,
+      end: 0.6,
+      child: Container(
+        height: MediaQuery.of(context).size.height * .92,
+        width: MediaQuery.of(context).size.width * .85,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * .05),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              const Text(
+                //HEADER TEXT
+                'Sign Up',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.7),
               ),
-            ),
-            //USERNAME ENTRY
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'User Name',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your name';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  _name = value;
-                });
-              },
-            ),
 
-            //MAIL ENTRY
-            TextFormField(
-              enableSuggestions: false,
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter an email address';
-                }
-                // Add more email validation rules if needed
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  _email = value;
-                });
-              },
-            ),
+              emptySpace(),
 
-            //PASSWORD ENTRY
-            TextFormField(
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: const InputDecoration(
-                labelText: 'Password',
+              //USERNAME ENTRY
+              TextFormField(
+                decoration: textFieldTheme('Username', const LineIcon.user()),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _name = value;
+                  });
+                },
               ),
-              obscureText: true,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a password';
-                }
-                // Add more password validation rules if needed
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  _password = value;
-                });
-              },
-            ),
 
-            //PASSWORD VALIDATION
-            TextFormField(
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: const InputDecoration(
-                labelText: 'Confirm Password',
+              emptySpace(),
+
+              //MAIL ENTRY
+              TextFormField(
+                enableSuggestions: false,
+                autocorrect: false,
+                keyboardType: TextInputType.emailAddress,
+                decoration: textFieldTheme('Email', const LineIcon.at()),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an email address';
+                  }
+                  // Add more email validation rules if needed
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _email = value;
+                  });
+                },
               ),
-              obscureText: true,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please confirm your password';
-                }
-                if (value != _password) {
-                  return 'Passwords do not match';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  _passwordConfirm = value;
-                });
-              },
-            ),
 
-            //PHONE NUMBER ENTRY
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Phone Number',
+              emptySpace(),
+
+              //PASSWORD ENTRY
+              TextFormField(
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: textFieldTheme('Password', const LineIcon.key()),
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a password';
+                  }
+                  // Add more password validation rules if needed
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _password = value;
+                  });
+                },
               ),
-              keyboardType: TextInputType.phone,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your phone number';
-                }
-                // Add more phone number validation rules if needed
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  _phoneNumber = value;
-                });
-              },
-            ),
 
-            // COUNTRY SELECTION
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height * .03),
-              child: const CountryPickerButton(),
-            ),
+              emptySpace(),
 
-            // REGISTER BUTTON
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.transparent,
-                ),
-                overlayColor: MaterialStateProperty.all<Color>(
-                  const Color.fromARGB(161, 236, 95, 224),
-                ),
+              //PASSWORD VALIDATION
+              TextFormField(
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration:
+                    textFieldTheme('Confirm Password', const LineIcon.key()),
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please confirm your password';
+                  }
+                  if (value != _password) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _passwordConfirm = value;
+                  });
+                },
               ),
-              onPressed: _name == (null) ||
-                      _email == (null) ||
-                      _password == (null) ||
-                      _passwordConfirm == (null) ||
-                      _phoneNumber == (null) ||
-                      _name.isEmpty ||
-                      _email.isEmpty ||
-                      _password.isEmpty ||
-                      _passwordConfirm.isEmpty ||
-                      _phoneNumber.isEmpty
-                  ? null
-                  : _submitForm,
-              child: Opacity(
-                opacity: _name == (null) ||
-                        _email == (null) ||
-                        _password == (null) ||
-                        _passwordConfirm == (null) ||
-                        _phoneNumber == (null) ||
-                        _name.isEmpty ||
-                        _email.isEmpty ||
-                        _password.isEmpty ||
-                        _passwordConfirm.isEmpty ||
-                        _phoneNumber.isEmpty
-                    ? 0.8
-                    : 1.0,
+
+              emptySpace(),
+
+              //PHONE NUMBER ENTRY
+              TextFormField(
+                decoration:
+                    textFieldTheme('Phone Number', const LineIcon.phone()),
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your phone number';
+                  }
+                  // Add more phone number validation rules if needed
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _phoneNumber = value;
+                  });
+                },
+              ),
+
+              emptySpace(),
+
+              // REGISTER BUTTON
+              ElevatedButton(
+                onPressed: _phoneNumber == (null) || _phoneNumber.isEmpty
+                    ? null
+                    : _submitForm,
                 child: const Text('Register'),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, route.loginPage),
-              child: const Text(
-                'Already have an account? click here to login',
-                style: TextStyle(
-                  fontSize: 11,
+              ElevatedButton(
+                style: secondaryButtonTheme(context),
+                onPressed: () => Navigator.pushNamed(context, route.loginPage),
+                child: const Text(
+                  'Already have an account? click here to login',
+                  style: TextStyle(
+                    fontSize: 11,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

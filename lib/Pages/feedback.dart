@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:xwallet/theme/theme.dart';
 
 class FeedbackPage extends StatefulWidget {
@@ -12,30 +11,6 @@ class FeedbackPage extends StatefulWidget {
 
 class _FeedbackPageState extends State<FeedbackPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
-
-  void onSend() {
-    _animationController.forward(from: -1);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(seconds: 5),
-      vsync: this,
-    );
-    _animation =
-        Tween<double>(begin: 0.6, end: -1).animate(_animationController);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
   XFile? _imageFile;
 
   Future<void> _pickImage() async {
@@ -57,23 +32,8 @@ class _FeedbackPageState extends State<FeedbackPage>
         title: const Text('Give Feedback'),
         backgroundColor: const Color.fromARGB(103, 9, 1, 40),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .07),
-        // Robot Image
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: const AssetImage('lib/assets/My project-1.png'),
-            fit: BoxFit.cover,
-            alignment: Alignment(
-              MediaQuery.of(context).size.height * .1,
-              MediaQuery.of(context).size.width * .5,
-            ),
-            opacity: 0.6,
-          ),
-        ),
+      body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * .05,
@@ -106,44 +66,6 @@ class _FeedbackPageState extends State<FeedbackPage>
                     controller: TextEditingController(),
                     maxLines: null,
                   ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      //Funny Animated Text
-                      padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * .67,
-                      ),
-                      child: ClipRRect(
-                        child: Align(
-                          widthFactor: 0.14,
-                          child: AnimatedBuilder(
-                            animation: _animation,
-                            builder: (context, child) {
-                              return Transform.translate(
-                                offset: Offset(
-                                    MediaQuery.of(context).size.width *
-                                        _animation.value,
-                                    0.9),
-                                child: child,
-                              );
-                            },
-                            child: Text(
-                              'Thanks for the feedback human'.toUpperCase(),
-                              style: GoogleFonts.getFont(
-                                'Press Start 2P',
-                                textStyle: const TextStyle(
-                                  fontSize: 12,
-                                  color: Color.fromARGB(255, 223, 191, 8),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .1,
@@ -192,9 +114,8 @@ class _FeedbackPageState extends State<FeedbackPage>
             ),
             ElevatedButton(
               //Send button
-              onPressed: () {
-                onSend();
-              },
+              onPressed: () {},
+
               child: const Text('Send'),
             )
           ],

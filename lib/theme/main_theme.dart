@@ -29,18 +29,61 @@ class MainTheme {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            maximumSize: MaterialStateProperty.all<Size>(
-              const Size(80, 80),
-            ),
-            backgroundColor: MaterialStateProperty.all<Color>(
-              Colors.transparent,
+            fixedSize: MaterialStateProperty.all<Size>(
+              const Size(50, 60),
             ),
             overlayColor: MaterialStateProperty.all<Color>(
-              const Color.fromARGB(161, 236, 95, 224),
+              const Color.fromRGBO(95, 15, 255, 1),
+            ),
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.disabled)) {
+                  return const Color.fromARGB(48, 22, 1,
+                      49); // Semi-transparent when the button is disabled
+                }
+                return const Color.fromARGB(223, 80, 6, 177); // Default color
+              },
+            ),
+            foregroundColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.disabled)) {
+                  return Colors.white; // Text color when the button is disabled
+                }
+                return Colors.white; // Default color
+              },
+            ),
+            side: MaterialStateProperty.resolveWith<BorderSide>(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.disabled)) {
+                  return const BorderSide(
+                      color: Color.fromARGB(187, 208, 207, 207),
+                      width: 1.0); // Border when the button is disabled
+                }
+                return BorderSide.none; // Default border
+              },
             ),
           ),
         ),
         scaffoldBackgroundColor: Colors.transparent,
         primaryColor: Colors.white);
   }
+}
+
+secondaryButtonTheme(BuildContext context) {
+  Size screenSize = MediaQuery.of(context).size; // Add this line
+
+  return ButtonStyle(
+    fixedSize: MaterialStateProperty.all<Size>(
+      Size(
+        MediaQuery.of(context).size.width * .4,
+        MediaQuery.of(context).size.width * .1,
+      ),
+    ),
+    backgroundColor: MaterialStateProperty.all<Color>(
+      const Color.fromARGB(209, 80, 3, 135),
+    ),
+    overlayColor: MaterialStateProperty.all<Color>(
+      const Color.fromARGB(209, 128, 6, 215),
+    ),
+  );
 }

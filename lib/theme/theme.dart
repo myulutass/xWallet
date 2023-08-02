@@ -100,6 +100,7 @@ class GradientTxt extends StatelessWidget {
         fontSize: fontsize,
       ),
       gradientType: GradientType.linear,
+      textAlign: TextAlign.center,
       radius: 1.4,
       colors: const [
         Color.fromARGB(255, 114, 180, 218),
@@ -107,4 +108,19 @@ class GradientTxt extends StatelessWidget {
       ],
     );
   }
+}
+
+InputDecoration textFieldTheme(String labelText, Icon icon) {
+  return InputDecoration(
+    prefixIcon: GradientIcon(icon: icon),
+    labelText: labelText,
+    border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7), borderSide: BorderSide.none),
+    labelStyle: const TextStyle(
+      color: Color.fromARGB(255, 232, 228, 228),
+      fontWeight: FontWeight.w200,
+    ),
+    filled: true,
+    fillColor: Color.fromARGB(40, 22, 3, 63),
+  );
 }

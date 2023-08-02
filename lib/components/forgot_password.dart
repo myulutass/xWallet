@@ -5,6 +5,7 @@ Future passwordReset(BuildContext context) {
       TextEditingController(); // Initialize _email here
 
   return showModalBottomSheet(
+      barrierColor: const Color.fromARGB(226, 0, 0, 0),
       isScrollControlled: true,
       context: context,
       backgroundColor: Colors.transparent,

@@ -161,7 +161,7 @@ class _SideDrawerState extends State<SideDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color.fromARGB(83, 0, 0, 0),
+      backgroundColor: const Color.fromARGB(189, 0, 0, 0),
       child: ListView(
         padding: const EdgeInsets.only(top: 100),
         children: [

@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: MainTheme().getTheme(),
         home: AnimatedSplashScreen(
+          // SPLASH SCREEN
           splash: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -76,9 +77,9 @@ class RegisterScreen extends StatelessWidget {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: GradientTxt(
-                fontsize: 60,
+                fontsize: 50,
                 text:
                     'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
               ),

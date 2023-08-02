@@ -84,41 +84,34 @@ class _CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       //CARD BUILD
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       color: Colors.transparent,
-      child: ClipRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: GlassMorphism(
-            start: 0.4,
-            end: 0.5,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * .05,
-              child: ListTile(
-                leading: getIcon(currency.symbol),
-                title: Text(
-                  currency.name,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
-                subtitle: Align(
-                  alignment: Alignment.topLeft,
-                  child: AnimatedFlipCounter(
-                    fractionDigits: 2,
-                    prefix: "\$",
-                    value: currency.priceUsd,
-                    duration: const Duration(milliseconds: 500),
-                    thousandSeparator: '.',
-                    textStyle: const TextStyle(
-                      fontSize: 12,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                ),
-                trailing: const Text(
-                  '0',
-                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.w300),
-                ),
+      child: GlassMorphism(
+        start: 0.4,
+        end: 0.5,
+        child: ListTile(
+          leading: getIcon(currency.symbol),
+          title: Text(
+            currency.name,
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+          subtitle: Align(
+            alignment: Alignment.topLeft,
+            child: AnimatedFlipCounter(
+              fractionDigits: 2,
+              prefix: "\$",
+              value: currency.priceUsd,
+              duration: const Duration(milliseconds: 500),
+              thousandSeparator: '.',
+              textStyle: const TextStyle(
+                fontSize: 12,
+                letterSpacing: 1,
               ),
             ),
+          ),
+          trailing: const Text(
+            '0',
+            style: TextStyle(fontSize: 19, fontWeight: FontWeight.w300),
           ),
         ),
       ),
