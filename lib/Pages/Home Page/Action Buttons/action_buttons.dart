@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:xwallet/Pages/Home%20Page/Action%20Buttons/receive_button.dart';
-import 'package:xwallet/Pages/Home%20Page/Action%20Buttons/send_button.dart';
-import 'package:xwallet/Pages/Home%20Page/Action%20Buttons/swap_button.dart';
+import 'package:xwallet/pages/Home%20Page/Action%20Buttons/receive_button.dart';
+import 'package:xwallet/pages/Home%20Page/Action%20Buttons/send_button.dart';
+import 'package:xwallet/pages/Home%20Page/Action%20Buttons/swap_button.dart';
 
 class ActionButtons extends StatefulWidget {
   const ActionButtons({
@@ -57,14 +57,14 @@ class _ActionButtonsState extends State<ActionButtons> {
             ],
           ),
           Column(
-            // RECIEVE BUTTON
+            // RECEIVE BUTTON
             children: [
               const RecieveButton(),
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * .02),
                 child: Text(
-                  'Receieve',
+                  'Receive',
                   style: myStyle,
                 ),
               ),

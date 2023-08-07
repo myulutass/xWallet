@@ -1,76 +1,97 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'lightdark.dart';
+
 class MainTheme {
+  final ThemeProvider themeProvider;
+
+  MainTheme(this.themeProvider);
+
   ThemeData getTheme() {
+    final isLightDark = themeProvider.isLightDark;
+    final buttonColor = isLightDark
+        //PRIMARY BUTTON COLOR
+        ? const Color.fromARGB(223, 80, 6, 177) // DARK
+        : const Color.fromARGB(255, 173, 114, 255); // LIGHT
+    final buttonAcvtiveColor = isLightDark
+        //PRIMARY BUTTON PUSH COLOR
+
+        ? const Color.fromRGBO(95, 15, 255, 1) // DARK
+        : const Color.fromARGB(255, 142, 69, 244); // LIGHT
+
+    final disabledButtonBorderColor = isLightDark
+        ? const BorderSide(
+            color: Color.fromARGB(164, 208, 207, 207), width: 0.5)
+        : BorderSide.none;
+
     return ThemeData(
-        snackBarTheme: const SnackBarThemeData(
-          backgroundColor: Color.fromARGB(121, 0, 0, 0),
+      scaffoldBackgroundColor: Colors.transparent,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color.fromARGB(15, 0, 0, 0),
+      ),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Color.fromARGB(121, 0, 0, 0),
+      ),
+      primaryTextTheme: GoogleFonts.nunitoTextTheme(
+        ThemeData().textTheme.apply(
+              displayColor: Colors.white,
+              bodyColor: Colors.white,
+            ),
+      ),
+      textTheme: GoogleFonts.ptSansTextTheme(
+        ThemeData().textTheme.apply(
+              displayColor: Colors.white,
+              bodyColor: Colors.white,
+            ),
+      ).copyWith(
+        bodyLarge: const TextStyle(
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
         ),
-        primaryTextTheme: GoogleFonts.nunitoTextTheme(
-          ThemeData().textTheme.apply(
-                displayColor: Colors.white,
-                bodyColor: Colors.white,
-              ),
+        bodyMedium: const TextStyle(
+          color: Colors.white,
         ),
-        textTheme: GoogleFonts.ptSansTextTheme(
-          ThemeData().textTheme.apply(
-                displayColor: Colors.white,
-                bodyColor: Colors.white,
-              ),
-        ).copyWith(
-          bodyLarge: const TextStyle(
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          fixedSize: MaterialStateProperty.all<Size>(
+            const Size(50, 60),
           ),
-          bodyMedium: const TextStyle(
-            color: Colors.white,
+          overlayColor: MaterialStateProperty.all<Color>(
+            buttonAcvtiveColor,
           ),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            fixedSize: MaterialStateProperty.all<Size>(
-              const Size(50, 60),
-            ),
-            overlayColor: MaterialStateProperty.all<Color>(
-              const Color.fromRGBO(95, 15, 255, 1),
-            ),
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-                if (states.contains(MaterialState.disabled)) {
-                  return const Color.fromARGB(48, 22, 1,
-                      49); // Semi-transparent when the button is disabled
-                }
-                return const Color.fromARGB(223, 80, 6, 177); // Default color
-              },
-            ),
-            foregroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-                if (states.contains(MaterialState.disabled)) {
-                  return Colors.white; // Text color when the button is disabled
-                }
-                return Colors.white; // Default color
-              },
-            ),
-            side: MaterialStateProperty.resolveWith<BorderSide>(
-              (Set<MaterialState> states) {
-                if (states.contains(MaterialState.disabled)) {
-                  return const BorderSide(
-                      color: Color.fromARGB(187, 208, 207, 207),
-                      width: 1.0); // Border when the button is disabled
-                }
-                return BorderSide.none; // Default border
-              },
-            ),
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return const Color.fromARGB(34, 0, 0, 0);
+              }
+              return buttonColor;
+            },
+          ),
+          side: MaterialStateProperty.resolveWith<BorderSide>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return disabledButtonBorderColor;
+              }
+              return BorderSide.none; // Default border
+            },
           ),
         ),
-        scaffoldBackgroundColor: Colors.transparent,
-        primaryColor: Colors.white);
+      ),
+      // Add the following lines for light and dark themes
+      brightness: isLightDark ? Brightness.light : Brightness.dark,
+      // other theme configurations for the light and dark themes
+    );
   }
 }
 
-secondaryButtonTheme(BuildContext context) {
-  Size screenSize = MediaQuery.of(context).size; // Add this line
+ButtonStyle secondaryButtonTheme(BuildContext context) {
+  // SECONDARY BUTTON THEME
+  Size screenSize = MediaQuery.of(context).size;
+
+  final theme = Theme.of(context);
+  final isDarkMode = theme.brightness == Brightness.dark;
 
   return ButtonStyle(
     fixedSize: MaterialStateProperty.all<Size>(
@@ -80,10 +101,21 @@ secondaryButtonTheme(BuildContext context) {
       ),
     ),
     backgroundColor: MaterialStateProperty.all<Color>(
-      const Color.fromARGB(209, 80, 3, 135),
+      isDarkMode
+          ? const Color.fromARGB(175, 170, 99, 232)
+          : const Color.fromARGB(
+              209, 80, 3, 135), // Set the background color based on theme mode
     ),
     overlayColor: MaterialStateProperty.all<Color>(
-      const Color.fromARGB(209, 128, 6, 215),
+      isDarkMode
+          ? const Color.fromARGB(174, 142, 30, 239)
+          : const Color.fromARGB(
+              209, 128, 6, 215), // Set the overlay color based on theme mode
+    ),
+    foregroundColor: MaterialStateProperty.all<Color>(
+      isDarkMode
+          ? const Color.fromARGB(255, 243, 238, 255)
+          : Colors.white, // Set the text color based on theme mode
     ),
   );
 }

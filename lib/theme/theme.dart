@@ -82,6 +82,7 @@ Widget customDivider() {
 }
 
 class GradientTxt extends StatelessWidget {
+  //HEADER GRADIENT TEXT THEME
   final double fontsize;
   final String text;
   const GradientTxt({
@@ -98,6 +99,8 @@ class GradientTxt extends StatelessWidget {
         'Gruppo',
         fontWeight: FontWeight.w600,
         fontSize: fontsize,
+        letterSpacing: -1.2,
+        wordSpacing: 3,
       ),
       gradientType: GradientType.linear,
       textAlign: TextAlign.center,
@@ -112,15 +115,20 @@ class GradientTxt extends StatelessWidget {
 
 InputDecoration textFieldTheme(String labelText, Icon icon) {
   return InputDecoration(
+    //TEXT INPUT THEME
     prefixIcon: GradientIcon(icon: icon),
     labelText: labelText,
     border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7), borderSide: BorderSide.none),
     labelStyle: const TextStyle(
-      color: Color.fromARGB(255, 232, 228, 228),
-      fontWeight: FontWeight.w200,
-    ),
+        color: Color.fromARGB(255, 232, 228, 228),
+        fontWeight: FontWeight.w100,
+        fontSize: 12),
     filled: true,
-    fillColor: Color.fromARGB(40, 22, 3, 63),
+    fillColor: Color.fromARGB(27, 22, 3, 63),
   );
+}
+
+TextStyle subText() {
+  return const TextStyle(fontWeight: FontWeight.w300, letterSpacing: 0.6);
 }

@@ -10,13 +10,7 @@ class LockMethod extends StatefulWidget {
 }
 
 class _LockMethodState extends State<LockMethod> {
-  late String _lockMethod;
-
-  @override
-  void initState() {
-    super.initState();
-    _lockMethod = 'Passcode&TouchID';
-  }
+  String _lockMethod = 'Passcode&TouchID';
 
   @override
   Widget build(BuildContext context) {

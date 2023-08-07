@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:xwallet/Pages/feedback.dart';
-import 'package:xwallet/Pages/help_center.dart';
-import 'package:xwallet/Pages/Home%20Page/home_page.dart';
-import 'package:xwallet/Pages/login_Page.dart';
-import 'package:xwallet/main.dart';
+import 'package:xwallet/pages/feedback.dart';
+import 'package:xwallet/pages/help_center.dart';
+import 'package:xwallet/pages/Home%20Page/home_page.dart';
+import 'package:xwallet/pages/login_Page.dart';
+
+import '../pages/sign_up.dart';
 
 // Route Names
 const String loginPage = '/login/';

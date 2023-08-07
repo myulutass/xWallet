@@ -6,28 +6,38 @@ import '../../../api/api.dart';
 import '../../../pop_ups/recieve.dart';
 
 class RecieveButton extends StatefulWidget {
-  const RecieveButton({super.key});
+  const RecieveButton({Key? key}) : super(key: key);
 
   @override
   State<RecieveButton> createState() => _ReceiveButtonState();
 }
 
 class _ReceiveButtonState extends State<RecieveButton> {
+  late Future<List<MarketAsset>>? topCurrenciesFuture;
   double _turnRecieve = 0.0;
 
-  late Future<List<MarketAsset>>? topCurrenciesFuture;
+  @override
+  void initState() {
+    super.initState();
+    topCurrenciesFuture = fetchTopCurrencies();
+  }
 
-  _showRecieveDialog() {
-    //RECIEVE POP UP
-    return showAnimatedDialog(
-        barrierColor: const Color.fromARGB(183, 0, 0, 0),
-        context: context,
-        builder: (BuildContext context) => Recieve(
-              topCurrenciesFuture: topCurrenciesFuture,
-            ),
-        animationType: DialogTransitionType.slideFromBottomFade,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeOutSine);
+  Future<void> _showRecieveDialog() async {
+    await showAnimatedDialog(
+      barrierColor: const Color.fromARGB(183, 0, 0, 0),
+      context: context,
+      builder: (BuildContext context) => Recieve(
+        topCurrenciesFuture: topCurrenciesFuture,
+      ),
+      animationType: DialogTransitionType.slideFromBottomFade,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOutSine,
+    );
+
+    setState(() {
+      // Rotate the icon back when popup is closed
+      _turnRecieve = -0.0;
+    });
   }
 
   Widget _iconButton() {
@@ -35,26 +45,13 @@ class _ReceiveButtonState extends State<RecieveButton> {
     return IconButton(
       onPressed: () {
         setState(() {
-          _turnRecieve += -0.1;
+          _turnRecieve -= 0.1;
         });
-        Future.delayed(const Duration(milliseconds: 300), () {
-          _showRecieveDialog().then((_) {
-            setState(() {
-              // Rotate the icon back when popup is closed
-              _turnRecieve -= -0.1;
-            });
-          });
-        });
+        _showRecieveDialog();
       },
       icon: SvgPicture.asset('lib/assets/RecieveButton.svg'),
       iconSize: MediaQuery.of(context).size.width * .12,
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    topCurrenciesFuture = fetchTopCurrencies();
   }
 
   @override

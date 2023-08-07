@@ -5,6 +5,34 @@ import 'package:xwallet/theme/glass.dart';
 import 'package:xwallet/theme/main_theme.dart';
 import 'package:xwallet/theme/theme.dart';
 
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+              child: GradientTxt(
+                fontsize: 50,
+                text:
+                    'Welcome to the world\'s coolest wallet app, Let\'s get you started!',
+              ),
+            ),
+            const SignUp(),
+            SizedBox(
+              height: MediaQuery.of(context).size.width * .15,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -58,12 +86,14 @@ class _SignUpState extends State<SignUp> {
               const Text(
                 //HEADER TEXT
                 'Sign Up',
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 0.7),
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: -1,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Color.fromARGB(180, 255, 255, 255)),
               ),
 
               emptySpace(),

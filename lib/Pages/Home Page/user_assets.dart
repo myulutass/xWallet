@@ -22,15 +22,16 @@ class _CryptoListState extends State<CryptoList> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<MarketAsset>>(
-      //TAKING THE DATA FOR ASSETS
+      // TAKING THE DATA FOR ASSETS
       future: widget.topCurrenciesFuture,
       builder:
           (BuildContext context, AsyncSnapshot<List<MarketAsset>> snapshot) {
         if (snapshot.hasData) {
           var currencies = snapshot.data!;
           return _CurrencyListView(
-              currencies: currencies,
-              topCurrenciesFuture: widget.topCurrenciesFuture);
+            currencies: currencies,
+            topCurrenciesFuture: widget.topCurrenciesFuture,
+          );
         }
         if (snapshot.hasError) {
           return Center(child: Text('${snapshot.error}'));
@@ -45,8 +46,10 @@ class _CurrencyListView extends StatelessWidget {
   final List<MarketAsset> currencies;
   final Future<List<MarketAsset>>? topCurrenciesFuture;
 
-  const _CurrencyListView(
-      {required this.currencies, required this.topCurrenciesFuture});
+  const _CurrencyListView({
+    required this.currencies,
+    required this.topCurrenciesFuture,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,7 @@ class _CurrencyListView extends StatelessWidget {
           vertical: MediaQuery.of(context).size.width * .01,
         ),
         child: ListView.builder(
-          //LIST BUILD
+          // LIST BUILD
           itemCount: currencies.length,
           itemBuilder: (context, index) {
             var currency = currencies[index];
@@ -83,7 +86,7 @@ class _CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      //CARD BUILD
+      // CARD BUILD
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       color: Colors.transparent,
       child: GlassMorphism(

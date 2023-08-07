@@ -85,11 +85,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       const Text(
                         'Log In',
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 0.7),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: -1,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Color.fromARGB(180, 255, 255, 255),
+                        ),
                       ),
 
                       emptySpace(),

@@ -37,7 +37,7 @@ class ThemeProvider with ChangeNotifier {
       ];
 
   List<Color> get darkColors => const [
-        Color.fromARGB(97, 93, 72, 248),
+        Color.fromARGB(98, 93, 72, 248),
         Color.fromARGB(85, 123, 63, 217),
         Color.fromARGB(94, 186, 81, 240),
       ];

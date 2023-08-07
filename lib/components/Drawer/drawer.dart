@@ -3,6 +3,8 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:xwallet/components/Drawer/app_lang.dart';
 import 'package:xwallet/components/Drawer/lock_method.dart';
+import 'package:xwallet/components/forgot_password.dart';
+import 'package:xwallet/components/new_password.dart';
 import 'package:xwallet/route/routes.dart' as route;
 import 'package:xwallet/theme/lightdark.dart';
 import 'package:xwallet/theme/theme.dart';
@@ -103,11 +105,18 @@ class _SideDrawerState extends State<SideDrawer> {
       ),
       title: const Text('Security'),
       children: [
-        const ListTile(
-          title: Text('Change Password'),
+        ListTile(
+          title: Text(
+            'Change Password',
+            style: subText(),
+          ),
+          onTap: () => newPassword(context),
         ),
         ListTile(
-          title: const Text('AppLock'),
+          title: Text(
+            'AppLock',
+            style: subText(),
+          ),
           trailing: Switch(
             value: _appLock,
             onChanged: (bool value) {
@@ -124,9 +133,12 @@ class _SideDrawerState extends State<SideDrawer> {
           visible: _appLockActivated,
           maintainState: true,
           maintainAnimation: true,
-          child: const ListTile(
-            title: Text('Lock Method'),
-            trailing: LockMethod(),
+          child: ListTile(
+            title: Text(
+              'Lock Method',
+              style: subText(),
+            ),
+            trailing: const LockMethod(),
           ),
         )
       ],
@@ -143,15 +155,24 @@ class _SideDrawerState extends State<SideDrawer> {
       title: const Text('Preferences'),
       children: [
         ListTile(
-          title: const Text('Currency'),
+          title: Text(
+            'Currency',
+            style: subText(),
+          ),
           trailing: _buildCurrencyDropdown(),
         ),
-        const ListTile(
-          title: Text('App Languge'),
-          trailing: AppLanguage(),
+        ListTile(
+          title: Text(
+            'App Languge',
+            style: subText(),
+          ),
+          trailing: const AppLanguage(),
         ),
         ListTile(
-          title: const Text('Dark Theme'),
+          title: Text(
+            'Dark Theme',
+            style: subText(),
+          ),
           trailing: _lightDarkSwitch(context),
         )
       ],

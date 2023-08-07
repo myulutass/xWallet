@@ -10,13 +10,7 @@ class AppLanguage extends StatefulWidget {
 }
 
 class _AppLanguageState extends State<AppLanguage> {
-  late String _appLanguage;
-
-  @override
-  void initState() {
-    super.initState();
-    _appLanguage = 'English';
-  }
+  String _appLanguage = 'English';
 
   @override
   Widget build(BuildContext context) {

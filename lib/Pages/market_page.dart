@@ -61,6 +61,7 @@ class _MarketPageState extends State<MarketPage> {
     return Scaffold(
       body: FutureBuilder<List<MarketAsset>>(
         future: widget.topCurrenciesFuture,
+        key: UniqueKey(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
