@@ -125,7 +125,7 @@ InputDecoration textFieldTheme(String labelText, Icon icon) {
         fontWeight: FontWeight.w100,
         fontSize: 12),
     filled: true,
-    fillColor: Color.fromARGB(27, 22, 3, 63),
+    fillColor: const Color.fromARGB(158, 22, 3, 63),
   );
 }
 

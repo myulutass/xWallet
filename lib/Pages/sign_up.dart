@@ -100,6 +100,7 @@ class _SignUpState extends State<SignUp> {
 
               //USERNAME ENTRY
               TextFormField(
+                textInputAction: TextInputAction.next,
                 decoration: textFieldTheme('Username', const LineIcon.user()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -118,6 +119,7 @@ class _SignUpState extends State<SignUp> {
 
               //MAIL ENTRY
               TextFormField(
+                textInputAction: TextInputAction.next,
                 enableSuggestions: false,
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
@@ -140,6 +142,7 @@ class _SignUpState extends State<SignUp> {
 
               //PASSWORD ENTRY
               TextFormField(
+                textInputAction: TextInputAction.next,
                 enableSuggestions: false,
                 autocorrect: false,
                 decoration: textFieldTheme('Password', const LineIcon.key()),
@@ -162,6 +165,7 @@ class _SignUpState extends State<SignUp> {
 
               //PASSWORD VALIDATION
               TextFormField(
+                textInputAction: TextInputAction.next,
                 enableSuggestions: false,
                 autocorrect: false,
                 decoration:
@@ -187,6 +191,7 @@ class _SignUpState extends State<SignUp> {
 
               //PHONE NUMBER ENTRY
               TextFormField(
+                textInputAction: TextInputAction.done,
                 decoration:
                     textFieldTheme('Phone Number', const LineIcon.phone()),
                 keyboardType: TextInputType.phone,

@@ -3,7 +3,6 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:xwallet/components/Drawer/app_lang.dart';
 import 'package:xwallet/components/Drawer/lock_method.dart';
-import 'package:xwallet/components/forgot_password.dart';
 import 'package:xwallet/components/new_password.dart';
 import 'package:xwallet/route/routes.dart' as route;
 import 'package:xwallet/theme/lightdark.dart';

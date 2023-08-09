@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
+
+import '../theme/theme.dart';
 
 Future<void> newPassword(BuildContext context) async {
   TextEditingController? password;
-  final formKey = GlobalKey<FormState>(); // Key for the form
+  final formKey = GlobalKey<FormState>();
+
+  final currentPassword = FocusNode();
+  final newPassword = FocusNode();
+  final newPasswordVal = FocusNode();
 
   Widget emptySpace() {
     return SizedBox(
@@ -18,7 +25,7 @@ Future<void> newPassword(BuildContext context) async {
     builder: (BuildContext context) {
       return Container(
         decoration: const BoxDecoration(
-          color: Color.fromARGB(89, 70, 3, 97),
+          color: Color.fromARGB(67, 131, 87, 233),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -36,6 +43,7 @@ Future<void> newPassword(BuildContext context) async {
                 children: [
                   emptySpace(),
                   const Text(
+                    // TITLE
                     'Configure New Password',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -51,78 +59,57 @@ Future<void> newPassword(BuildContext context) async {
                     child: Column(
                       children: [
                         TextFormField(
+                          // CURRENT PASSWORD ENTRY
                           controller: password,
+                          focusNode: currentPassword,
+                          textInputAction: TextInputAction.next,
+                          obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your current password';
                             }
-                            // You can also add more email validation logic here
                             return null;
                           },
-                          decoration: const InputDecoration(
-                            filled: true,
-                            fillColor: Color.fromARGB(92, 247, 239, 239),
-                            label: Text(
-                              'Current Password',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                color: Color.fromARGB(181, 242, 233, 233),
-                              ),
-                            ),
-                          ),
+                          decoration: textFieldTheme(
+                              'Current Password', const LineIcon.key()),
                         ),
                         emptySpace(),
                         TextFormField(
+                          // NEW PASSWORD ENTRY
                           controller: password,
+                          focusNode: newPassword,
+                          textInputAction: TextInputAction.next,
+                          obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your new password';
                             }
-                            // You can also add more email validation logic here
                             return null;
                           },
-                          decoration: const InputDecoration(
-                            filled: true,
-                            fillColor: Color.fromARGB(92, 247, 239, 239),
-                            label: Text(
-                              'New Password',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                color: Color.fromARGB(181, 242, 233, 233),
-                              ),
-                            ),
-                          ),
+                          decoration: textFieldTheme(
+                              'New Password', const LineIcon.key()),
                         ),
                         emptySpace(),
                         TextFormField(
+                          // NEW PASSWORD VALIDATION
                           controller: password,
+                          focusNode: newPasswordVal,
+                          textInputAction: TextInputAction.done,
+                          obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your new password';
                             }
-                            // You can also add more email validation logic here
                             return null;
                           },
-                          decoration: const InputDecoration(
-                            filled: true,
-                            fillColor: Color.fromARGB(92, 247, 239, 239),
-                            label: Text(
-                              'New Password Validation',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                color: Color.fromARGB(181, 242, 233, 233),
-                              ),
-                            ),
-                          ),
+                          decoration: textFieldTheme(
+                              'New Password Validation', const LineIcon.key()),
                         ),
                       ],
                     ),

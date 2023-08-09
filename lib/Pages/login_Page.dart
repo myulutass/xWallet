@@ -98,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       emptySpace(),
                       // EMAIL ENTRY
                       TextFormField(
+                        textInputAction: TextInputAction.next,
                         controller: _email,
                         enableSuggestions: false,
                         autocorrect: false,
@@ -116,6 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       // PASSWORD ENTRY
                       TextFormField(
+                        textInputAction: TextInputAction.done,
                         controller: _password,
                         enableSuggestions: false,
                         autocorrect: false,
