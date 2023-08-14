@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:xwallet/components/splash_screen.dart';
 import 'package:xwallet/pages/sign_up.dart';
 import 'package:xwallet/route/routes.dart' as route;
 import 'package:country_picker/country_picker.dart';
@@ -37,30 +38,7 @@ class MyApp extends StatelessWidget {
                       onGenerateRoute: route.controller,
                       debugShowCheckedModeBanner: false,
                       theme: MainTheme(themeProvider).getTheme(),
-                      home: AnimatedSplashScreen(
-                        // SPLASH SCREEN
-                        splash: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'lib/assets/AppIcon.png',
-                              width: MediaQuery.of(context).size.width * .35,
-                              filterQuality: FilterQuality.high,
-                            ),
-                            SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.width * .05),
-                            const GradientTxt(
-                              text: 'xWallet',
-                              fontsize: 18,
-                            ),
-                          ],
-                        ),
-                        nextScreen: const RegisterScreen(),
-                        backgroundColor: const Color.fromARGB(107, 0, 0, 0),
-                        splashTransition: SplashTransition.fadeTransition,
-                        splashIconSize: double.infinity,
-                      ),
+                      home: splashScreen(context),
                     )),
           );
         },
