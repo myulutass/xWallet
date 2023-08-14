@@ -63,7 +63,6 @@ SvgPicture getIcon(String symbol) {
     case 'ltc':
       assetName = "lib/assets/litecoin-ltc-logo.svg";
       break;
-    // Continue for all symbols you support.
     default:
       assetName = "lib/assets/bitcoin-btc-logo.svg";
       // Set a default icon for unsupported symbols.
