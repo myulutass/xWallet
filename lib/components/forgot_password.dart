@@ -87,7 +87,7 @@ Future<void> passwordReset(BuildContext context) async {
                         }
                       },
                       child: const Text(
-                        'Send a reset link',
+                        'Send reset link',
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           letterSpacing: 0.6,

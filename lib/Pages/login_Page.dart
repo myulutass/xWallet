@@ -103,8 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         enableSuggestions: false,
                         autocorrect: false,
                         keyboardType: TextInputType.emailAddress,
-                        decoration:
-                            textFieldTheme('Email', const LineIcon.at()),
+                        decoration: textFieldTheme(
+                            'Email', const LineIcon.at(), context),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter an email address';
@@ -121,8 +121,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: _password,
                         enableSuggestions: false,
                         autocorrect: false,
-                        decoration:
-                            textFieldTheme('Password', const LineIcon.key()),
+                        decoration: textFieldTheme(
+                            'Password', const LineIcon.key(), context),
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {

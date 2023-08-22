@@ -99,7 +99,7 @@ class _CardItem extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           subtitle: Align(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.bottomLeft,
             child: AnimatedFlipCounter(
               fractionDigits: 2,
               prefix: "\$",

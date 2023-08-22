@@ -72,8 +72,8 @@ Future<void> newPassword(BuildContext context) async {
                             }
                             return null;
                           },
-                          decoration: textFieldTheme(
-                              'Current Password', const LineIcon.key()),
+                          decoration: textFieldTheme('Current Password',
+                              const LineIcon.key(), context),
                         ),
                         emptySpace(),
                         TextFormField(
@@ -91,7 +91,7 @@ Future<void> newPassword(BuildContext context) async {
                             return null;
                           },
                           decoration: textFieldTheme(
-                              'New Password', const LineIcon.key()),
+                              'New Password', const LineIcon.key(), context),
                         ),
                         emptySpace(),
                         TextFormField(
@@ -108,8 +108,8 @@ Future<void> newPassword(BuildContext context) async {
                             }
                             return null;
                           },
-                          decoration: textFieldTheme(
-                              'New Password Validation', const LineIcon.key()),
+                          decoration: textFieldTheme('New Password Validation',
+                              const LineIcon.key(), context),
                         ),
                       ],
                     ),

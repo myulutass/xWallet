@@ -101,7 +101,8 @@ class _SignUpState extends State<SignUp> {
               //USERNAME ENTRY
               TextFormField(
                 textInputAction: TextInputAction.next,
-                decoration: textFieldTheme('Username', const LineIcon.user()),
+                decoration:
+                    textFieldTheme('Username', const LineIcon.user(), context),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your name';
@@ -123,7 +124,8 @@ class _SignUpState extends State<SignUp> {
                 enableSuggestions: false,
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
-                decoration: textFieldTheme('Email', const LineIcon.at()),
+                decoration:
+                    textFieldTheme('Email', const LineIcon.at(), context),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an email address';
@@ -145,7 +147,8 @@ class _SignUpState extends State<SignUp> {
                 textInputAction: TextInputAction.next,
                 enableSuggestions: false,
                 autocorrect: false,
-                decoration: textFieldTheme('Password', const LineIcon.key()),
+                decoration:
+                    textFieldTheme('Password', const LineIcon.key(), context),
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -168,8 +171,8 @@ class _SignUpState extends State<SignUp> {
                 textInputAction: TextInputAction.next,
                 enableSuggestions: false,
                 autocorrect: false,
-                decoration:
-                    textFieldTheme('Confirm Password', const LineIcon.key()),
+                decoration: textFieldTheme(
+                    'Confirm Password', const LineIcon.key(), context),
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -192,8 +195,8 @@ class _SignUpState extends State<SignUp> {
               //PHONE NUMBER ENTRY
               TextFormField(
                 textInputAction: TextInputAction.done,
-                decoration:
-                    textFieldTheme('Phone Number', const LineIcon.phone()),
+                decoration: textFieldTheme(
+                    'Phone Number', const LineIcon.phone(), context),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -213,9 +216,7 @@ class _SignUpState extends State<SignUp> {
 
               // REGISTER BUTTON
               ElevatedButton(
-                onPressed: _phoneNumber == (null) || _phoneNumber.isEmpty
-                    ? null
-                    : _submitForm,
+                onPressed: _submitForm,
                 child: const Text('Register'),
               ),
               ElevatedButton(

@@ -113,7 +113,10 @@ class GradientTxt extends StatelessWidget {
   }
 }
 
-InputDecoration textFieldTheme(String labelText, Icon icon) {
+InputDecoration textFieldTheme(
+    String labelText, Icon icon, BuildContext context) {
+  final theme = Theme.of(context);
+  final isDarkMode = theme.brightness == Brightness.dark;
   return InputDecoration(
     //TEXT INPUT THEME
     prefixIcon: GradientIcon(icon: icon),
@@ -125,7 +128,9 @@ InputDecoration textFieldTheme(String labelText, Icon icon) {
         fontWeight: FontWeight.w100,
         fontSize: 12),
     filled: true,
-    fillColor: const Color.fromARGB(158, 22, 3, 63),
+    fillColor: isDarkMode
+        ? const Color.fromARGB(255, 232, 117, 207)
+        : const Color.fromARGB(158, 69, 33, 145),
   );
 }
 

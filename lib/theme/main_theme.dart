@@ -79,9 +79,7 @@ class MainTheme {
           ),
         ),
       ),
-      // Add the following lines for light and dark themes
       brightness: isLightDark ? Brightness.light : Brightness.dark,
-      // other theme configurations for the light and dark themes
     );
   }
 }
