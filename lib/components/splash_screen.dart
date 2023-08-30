@@ -11,7 +11,7 @@ AnimatedSplashScreen splashScreen(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
-          'lib/assets/AppIcon.png',
+          'lib/assets/SplashAppIcon.png',
           width: MediaQuery.of(context).size.width * .35,
           filterQuality: FilterQuality.high,
         ),
